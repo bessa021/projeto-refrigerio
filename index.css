@@ -127,7 +127,7 @@ header {
 
 /* Estilos para o botão do menu hambúrguer em telas pequenas */
 .menu-hamburguer {
-    display: none; /* Ocultando o botão em telas grandes */
+    display: none; /* Inicialmente escondido em telas grandes */
     font-size: 1.6rem;
     background: transparent;
     border: none;
@@ -137,6 +137,21 @@ header {
     z-index: 1001;
     transition: all 0.3s ease;
 }
+
+.menu-hamburguer.active {
+    transform: rotate(45deg); /* Transforma o ícone em um "X" */
+}
+
+.menu-hamburguer.active {
+    background-color: transparent;
+}
+
+/* Efeito de hover para o botão de menu hambúrguer */
+.menu-hamburguer:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
 
 /* Responsividade para dispositivos móveis (máx. 768px) */
 @media (max-width: 768px) {
