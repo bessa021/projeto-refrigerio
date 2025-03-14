@@ -32,3 +32,8 @@ document.getElementById("whatsappForm").addEventListener("submit", function(e) {
     // Abrir o WhatsApp com a mensagem
     window.open(whatsappLink, "_blank");
 });
+
+function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('active');
+}

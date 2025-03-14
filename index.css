@@ -7,6 +7,72 @@
 }
 
 
+/* Estilos gerais para o menu hambúrguer */
+.menu-hamburguer {
+    display: none; /* Por padrão, o botão está oculto em telas grandes */
+    font-size: 2rem;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+/* Estilo do menu quando ele está visível em dispositivos móveis */
+.menu-hamburguer.active {
+    color: #00d4ff; /* Cor que destaca o botão ativo */
+}
+
+/* Definir o menu para dispositivos móveis */
+@media (max-width: 768px) {
+    /* Exibir o botão do menu hambúrguer somente em telas pequenas */
+    .menu-hamburguer {
+        display: block;
+    }
+
+    /* Ocultar o menu original em telas pequenas */
+    .navbar .menu {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro para o menu */
+        position: absolute;
+        top: 60px; /* Espaçamento do topo para o menu */
+        left: 0;
+        padding: 20px 0;
+    }
+
+    /* Menu ativo quando o botão for clicado */
+    .navbar .menu.active {
+        display: block;
+    }
+
+    .menu a {
+        font-size: 1.5rem;
+        padding: 15px;
+        text-transform: uppercase;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: block;
+    }
+
+    .menu a:hover {
+        background-color: rgba(255, 255, 255, 0.3); /* Efeito de hover suave */
+        transform: translateY(-5px);
+    }
+}
+
+/* Estilos para o menu quando está sendo exibido */
+@media (max-width: 768px) {
+    .navbar .menu.active {
+        display: flex;
+    }
+}
+
 
 
 /* Definições globais */
