@@ -6,35 +6,6 @@
     font-family: 'Space Grotesk', sans-serif;
 }
 
-
-.menu-hamburguer {
-    display: none; /* Por padrão, o botão está oculto em telas grandes */
-    font-size: 2rem;
-    background: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1001;
-    transition: all 0.3s ease;
-}
-
-/* Estilos para a Navbar */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 15px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-}
-
 /* Para dispositivos móveis, a ordem dos elementos será invertida */
 @media (max-width: 768px) {
     .navbar {
@@ -109,12 +80,13 @@ header {
 }
 
 /* Navbar fixa no topo */
+/* Estilos para a Navbar */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 15px 5%;
+    padding: 10px 5%; /* Reduzindo o padding da navbar */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -122,29 +94,91 @@ header {
     backdrop-filter: blur(10px); /* Efeito de desfoque suave */
     z-index: 1000;
     border-bottom: 2px solid rgba(255, 255, 255, 0.3); /* Linha de separação suave */
+    height: 60px; /* Reduzindo a altura da navbar */
 }
 
-/* Menu estilizado */
+/* Logo da Navbar (ajustando para ficar proporcional) */
+.navbar img {
+    width: 60px; /* Ajustando o tamanho da logo */
+}
+
+/* Menu da Navbar (links) */
 .menu {
     display: flex;
-    gap: 30px;
+    gap: 20px; /* Reduzindo o espaçamento entre os links */
 }
 
 .menu a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.1rem;
-    padding: 12px 18px;
+    font-size: 1rem; /* Reduzindo o tamanho da fonte */
+    padding: 8px 15px; /* Reduzindo o padding nos links */
     border-radius: 25px;
     transition: all 0.3s ease;
     display: inline-block;
 }
 
-/* Efeito de hover para links do menu */
+/* Efeito de hover para links da navbar */
 .menu a:hover {
     background: rgba(255, 255, 255, 0.3); /* Fundo suave ao passar o mouse */
     transform: translateY(-3px);
+}
+
+/* Estilos para o botão do menu hambúrguer em telas pequenas */
+.menu-hamburguer {
+    display: none; /* Ocultando o botão em telas grandes */
+    font-size: 1.6rem;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+/* Responsividade para dispositivos móveis (máx. 768px) */
+@media (max-width: 768px) {
+    /* Exibindo o botão do menu hambúrguer em telas pequenas */
+    .menu-hamburguer {
+        display: block; /* Só aparece em telas menores que 768px */
+    }
+
+    /* Ajuste da navbar para dispositivos móveis */
+    .navbar {
+        flex-direction: row;  /* Organiza a logo e o menu hambúrguer na mesma linha */
+        justify-content: space-between;
+        padding: 10px 5%;
+        height: 50px; /* Menor altura na versão mobile */
+    }
+
+    /* Excluindo o menu normal em dispositivos móveis */
+    .navbar .menu {
+        display: none;  /* Menu inicialmente escondido */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.8); /* Fundo escuro para o menu */
+    }
+
+    .navbar .menu.active {
+        display: flex; /* Menu visível quando ativado */
+    }
+
+    /* Ajuste da altura da logo para celulares */
+    .navbar img {
+        width: 50px; /* Reduzindo o tamanho da logo para dispositivos móveis */
+    }
+}
+
+/* O menu padrão (desktop) continua visível normalmente */
+@media (min-width: 769px) {
+    .navbar .menu {
+        display: flex; /* Exibe o menu normalmente em telas grandes */
+    }
 }
 
 /* Animação suave de entrada */
@@ -567,4 +601,133 @@ footer {
 
 .contato-form button:hover {
     background-color: #001f4d;
+}
+
+
+.porque-escolher {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #001f4d; /* Cor de fundo para combinar com o tema */
+    color: white; /* Cor do texto para garantir boa legibilidade */
+    animation: fadeIn 1s ease-out; /* Animação de entrada */
+}
+
+.porque-escolher h2 {
+    font-size: 2.5rem;
+    color: #00d4ff; /* Usando o tom azul claro do seu site */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    animation: fadeInTitle 1s ease-out;
+}
+
+.porque-escolher p {
+    font-size: 1.2rem;
+    color: #d1d1d1; /* Um tom mais claro de cinza para o texto secundário */
+    margin-bottom: 30px;
+    animation: fadeInText 1.5s ease-out;
+}
+
+/* Container para os itens da seção */
+.porque-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    animation: slideUp 1s ease-out;
+}
+
+/* Item individual */
+.porque-item {
+    background: #002f5f; /* Usando uma cor azul escuro para os itens */
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 300px;
+}
+
+/* Efeito de hover para os itens */
+.porque-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajustes no ícone dentro de cada item */
+.porque-item img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito de zoom no ícone */
+.porque-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Título de cada item */
+.porque-item h3 {
+    font-size: 1.3rem;
+    color: #00d4ff; /* Usando a cor azul clara para os títulos */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Descrição de cada item */
+.porque-item p {
+    font-size: 1rem;
+    color: #d1d1d1; /* Usando um tom claro de cinza para o texto de descrição */
+}
+
+/* Animações para entrada da seção */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

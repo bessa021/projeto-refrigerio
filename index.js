@@ -41,3 +41,10 @@ function toggleMenu() {
     const menu = document.querySelector('.menu');
     menu.classList.toggle('active');
 }
+
+const menuHamburguer = document.querySelector('.menu-hamburguer');
+const menu = document.querySelector('.navbar .menu');
+
+menuHamburguer.addEventListener('click', () => {
+    menu.classList.toggle('active');
+});
