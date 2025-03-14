@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Refrigério</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="website icon" type="png" href="./imagem/gelo-removebg-preview.png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <a href="./index.html">
+                <img src="./imagem/284718723_326418802964355_5518827216706680262_n-removebg-preview.png" alt="Logotipo" width="100px">
+            <nav class="menu">
+                <a href="./index.html" class="active">Início</a>
+                <a href="./servicos.html">Serviços</a>
+                <a href="./contato.html">Contato</a>
+            </nav>
+        </div>
+        <div class="header-content">
+            <h1>Nosso Contato!</h1>
+            <p>Agende conosco a sua instalação ou conserto!</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção de Contato -->
+        <section class="contato">
+            <div class="contato-container">
+                <!-- Informações de Contato -->
+                <div class="contato-info">
+                    <h2>Entre em Contato</h2>
+                    <p>Se você tem alguma dúvida, ou deseja solicitar um orçamento, preencha o formulário abaixo!</p>
+                </div>
+
+                <!-- Formulário de Contato -->
+                <div class="contato-form">
+                    <h2>Envie uma Mensagem</h2>
+                    <form id="whatsappForm" action="https://api.whatsapp.com/send" method="get" target="_blank">
+                        <label for="nome">Seu Nome:</label>
+                        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+
+                        <label for="mensagem">Sua Mensagem:</label>
+                        <textarea id="mensagem" name="mensagem" placeholder="Escreva sua mensagem" rows="4" required></textarea>
+
+                        <button type="submit">Enviar para WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>COPYRIGHT © 2025 REFRIGÉRIO – TODOS OS DIREITOS RESERVADOS.</p>
+        </div>
+    </footer>
+    <script src="index.js"></script>
+</body>
+
+</html>
