@@ -11,6 +11,10 @@ function checkAnimation() {
     });
 }
 
+document.getElementById("dropdownButton").addEventListener("click", function() {
+    document.getElementById("dropdownMenu").classList.toggle("hidden");
+});
+
 // Chama a função quando o usuário rolar a página
 window.addEventListener('scroll', checkAnimation);
 
