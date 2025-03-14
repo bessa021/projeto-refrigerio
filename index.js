@@ -24,7 +24,7 @@ document.getElementById("whatsappForm").addEventListener("submit", function(e) {
     const mensagem = document.getElementById("mensagem").value;
 
     // Codificar a mensagem
-    const mensagemCodificada = encodeURIComponent(`Olá, meu nome é ${nome}.\n${mensagem}`);
+    const mensagemCodificada = encodeURIComponent(`Nome: ${nome}.\n\n${mensagem}`);
 
     // Criar o link correto do WhatsApp
     const whatsappLink = `https://api.whatsapp.com/send?phone=+5521997327351&text=${mensagemCodificada}`;
