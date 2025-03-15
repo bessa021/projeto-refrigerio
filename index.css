@@ -62,7 +62,7 @@ body {
 
 
 /* Estilos para o cabeçalho */
-/* Estilos do cabeçalho */
+/* Estilos para o cabeçalho */
 header {
     font-family: 'Space Grotesk', sans-serif;
     width: 100%;
@@ -75,83 +75,128 @@ header {
     justify-content: center;
     color: white;
     text-align: center;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* Sombra suave para melhorar contraste do texto */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6); /* Sombra mais intensa para melhorar o contraste */
     overflow: hidden;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.2); /* Linha suave na parte inferior */
 }
 
 /* Navbar fixa no topo */
-/* Estilos para a Navbar */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 10px 5%; /* Reduzindo o padding da navbar */
+    padding: 12px 5%; /* Ajustando o padding da navbar */
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: rgba(0, 0, 0, 0.6); /* Fundo transparente e levemente escuro para a navbar */
-    backdrop-filter: blur(10px); /* Efeito de desfoque suave */
+    backdrop-filter: blur(15px); /* Aumentando o desfoque para um efeito mais suave */
     z-index: 1000;
     border-bottom: 2px solid rgba(255, 255, 255, 0.3); /* Linha de separação suave */
-    height: 60px; /* Reduzindo a altura da navbar */
+    height: 70px; /* Ajustando a altura da navbar para dar mais espaço */
 }
 
 /* Logo da Navbar (ajustando para ficar proporcional) */
 .navbar img {
-    width: 60px; /* Ajustando o tamanho da logo */
+    width: 70px; /* Ajustando o tamanho da logo para maior destaque */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito de hover para logo */
+.navbar img:hover {
+    transform: scale(1.1); /* Aumentando o tamanho da logo ao passar o mouse */
 }
 
 /* Menu da Navbar (links) */
 .menu {
     display: flex;
-    gap: 20px; /* Reduzindo o espaçamento entre os links */
+    gap: 30px; /* Aumentando o espaçamento entre os links */
 }
 
 .menu a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem; /* Reduzindo o tamanho da fonte */
-    padding: 8px 15px; /* Reduzindo o padding nos links */
-    border-radius: 25px;
+    font-weight: 600; /* Leve aumento no peso da fonte */
+    font-size: 1.1rem; /* Ajustando o tamanho da fonte para maior legibilidade */
+    padding: 10px 18px; /* Aumentando o padding para links mais confortáveis */
+    border-radius: 30px; /* Tornando os bordos mais arredondados */
     transition: all 0.3s ease;
     display: inline-block;
+    text-transform: uppercase; /* Tornando o texto maiúsculo */
 }
 
 /* Efeito de hover para links da navbar */
 .menu a:hover {
-    background: rgba(255, 255, 255, 0.3); /* Fundo suave ao passar o mouse */
-    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.2); /* Fundo suave ao passar o mouse */
+    color: #00d4ff; /* Mudando a cor para o azul claro */
+    transform: translateY(-5px); /* Levantando o link mais durante o hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adicionando uma leve sombra para destacar mais o link */
 }
+
+/* Adicionando uma animação suave no carregamento da navbar */
+.navbar {
+    animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
 
 /* Estilos para o botão do menu hambúrguer em telas pequenas */
 .menu-hamburguer {
     display: none; /* Inicialmente escondido em telas grandes */
-    font-size: 1.6rem;
+    font-size: 2rem; /* Aumentando o tamanho para tornar o ícone mais visível */
     background: transparent;
     border: none;
     color: white;
     cursor: pointer;
-    padding: 8px;
+    padding: 10px;
     z-index: 1001;
     transition: all 0.3s ease;
+    position: relative;
 }
 
-.menu-hamburguer.active {
-    transform: rotate(45deg); /* Transforma o ícone em um "X" */
+.menu-hamburguer:before,
+.menu-hamburguer:after,
+.menu-hamburguer div {
+    content: '';
+    display: block;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    margin: 6px 0;
+    width: 30px;
 }
 
-.menu-hamburguer.active {
-    background-color: transparent;
+/* Transforma o ícone em "X" quando ativo */
+.menu-hamburguer.active:before {
+    transform: rotate(45deg);
+    top: 7px;
+}
+
+.menu-hamburguer.active:after {
+    transform: rotate(-45deg);
+    top: -7px;
+}
+
+.menu-hamburguer.active div {
+    opacity: 0; /* Esconde a linha do meio */
 }
 
 /* Efeito de hover para o botão de menu hambúrguer */
 .menu-hamburguer:hover {
-    transform: scale(1.1);
+    transform: scale(1.2); /* Aumenta o tamanho ao passar o mouse */
     transition: transform 0.3s ease;
 }
-
 
 /* Responsividade para dispositivos móveis (máx. 768px) */
 @media (max-width: 768px) {
@@ -164,8 +209,8 @@ header {
     .navbar {
         flex-direction: row;  /* Organiza a logo e o menu hambúrguer na mesma linha */
         justify-content: space-between;
-        padding: 10px 5%;
-        height: 50px; /* Menor altura na versão mobile */
+        padding: 12px 5%;
+        height: 55px; /* Menor altura na versão mobile */
     }
 
     /* Excluindo o menu normal em dispositivos móveis */
@@ -173,19 +218,40 @@ header {
         display: none;  /* Menu inicialmente escondido */
         flex-direction: column;
         position: absolute;
-        top: 60px;
+        top: 70px;
         left: 0;
         width: 100%;
-        background: rgba(0, 0, 0, 0.8); /* Fundo escuro para o menu */
+        background: rgba(0, 0, 0, 0.9); /* Fundo mais escuro e suave para o menu */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Adicionando sombra para dar destaque */
+        border-top: 3px solid #00d4ff; /* Linha superior fina para contraste */
+        padding: 20px 0;
     }
 
     .navbar .menu.active {
         display: flex; /* Menu visível quando ativado */
     }
 
+    .navbar .menu a {
+        color: white;
+        text-decoration: none;
+        padding: 15px 20px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        transition: background-color 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Efeito de hover para os links do menu em telas pequenas */
+    .navbar .menu a:hover {
+        background-color: #00d4ff; /* Cor de fundo ao passar o mouse */
+        color: #001f4d; /* Mudando a cor do texto para um contraste mais forte */
+    }
+
     /* Ajuste da altura da logo para celulares */
     .navbar img {
         width: 50px; /* Reduzindo o tamanho da logo para dispositivos móveis */
+        height: auto;
     }
 }
 
@@ -193,43 +259,71 @@ header {
 @media (min-width: 769px) {
     .navbar .menu {
         display: flex; /* Exibe o menu normalmente em telas grandes */
+        gap: 20px; /* Aumentando o espaçamento entre os links */
+    }
+
+    .navbar .menu a {
+        font-size: 1.2rem;
+        padding: 12px 18px;
+        border-radius: 25px; /* Bordas arredondadas para os links do menu */
+        transition: background-color 0.3s ease;
+    }
+
+    .navbar .menu a:hover {
+        background-color: #00d4ff; /* Efeito de hover com cor suave */
+        color: #001f4d;
     }
 }
 
-/* Animação suave de entrada */
+/* Estilos para o conteúdo do cabeçalho */
 .header-content {
-    background: rgba(0, 0, 0, 0.5); /* Transparente e com leve escuridão para destacar o texto */
-    padding: 35px;
-    border-radius: 15px;
-    max-width: 650px;
-    animation: fadeIn 1.5s ease-in-out;
+    background: rgba(0, 0, 0, 0.6); /* Aumentando a opacidade para dar mais contraste ao texto */
+    padding: 40px 40px 45px; /* Ajustando o padding para um espaçamento confortável */
+    border-radius: 20px; /* Aumentando o arredondamento das bordas para um visual mais suave */
+    max-width: 700px; /* Aumentando o tamanho máximo para dar mais espaço ao conteúdo */
+    animation: fadeIn 1.5s ease-in-out; /* Efeito de fade-in já aplicado */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); /* Adicionando sombra suave para destacar o conteúdo */
+    backdrop-filter: blur(10px); /* Adicionando um desfoque suave no fundo */
+    position: relative;
 }
 
 /* Título maior e destacado */
 .header-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 15px;
+    font-size: 4rem; /* Aumentando o tamanho do título para mais destaque */
+    margin-bottom: 20px;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px; /* Aumentando o espaçamento entre as letras para dar mais ênfase */
+    font-weight: 700; /* Dando mais peso ao título */
+    color: #ffffff; /* Garantindo que o título fique em branco */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Sombra sutil para aumentar o contraste */
 }
 
 /* Subtítulo com espaçamento */
 .header-content p {
-    font-size: 1.4rem;
-    line-height: 1.6;
-    opacity: 0.9;
+    font-size: 1.6rem; /* Aumentando o tamanho da fonte do subtítulo */
+    line-height: 1.8; /* Aumentando o espaçamento entre as linhas para melhor leitura */
+    opacity: 0.85; /* Leve transparência para um efeito mais suave */
+    color: #d1d1d1; /* Mudando a cor do subtítulo para um tom mais suave de cinza */
+    margin-bottom: 25px;
 }
 
 /* Efeito de entrada */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-30px);
+        transform: translateY(-50px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Adicionando um efeito de hover no conteúdo */
+.header-content:hover {
+    transform: scale(1.02); /* Aumentando ligeiramente o tamanho do conteúdo ao passar o mouse */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Intensificando a sombra para dar um efeito de destaque */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suavizando a transição */
 }
 
 /* Responsividade para dispositivos móveis (máx. 768px) */
@@ -286,10 +380,11 @@ header {
 
 /* Estilos para a seção de serviços */
 .servicos {
-    background: #001f4d;
+    background: #001f4d; /* Mantendo o fundo escuro */
     color: white;
-    padding: 50px 20px;
+    padding: 60px 20px;
     text-align: center;
+    border-bottom: 5px solid rgba(255, 255, 255, 0.2); /* Adicionando uma linha de separação suave */
 }
 
 .servico-container {
@@ -297,62 +392,83 @@ header {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 50px; /* Aumentando o espaçamento entre os itens */
     max-width: 1200px;
     margin: auto;
-    padding: 30px 0;
+    padding: 40px 0;
 }
 
+/* Texto dos serviços */
 .servico-texto {
-    max-width: 600px;
+    max-width: 650px; /* Aumentando a largura para dar mais espaço ao texto */
     text-align: left;
+    transition: transform 0.3s ease-in-out; /* Transição suave para animação */
 }
 
+/* Título dos serviços */
 .servico-texto h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.servico-texto p {
-    font-size: 1.2rem;
-    line-height: 1.6;
+    font-size: 3rem; /* Aumentando o tamanho do título */
     margin-bottom: 15px;
+    font-weight: 700;
+    text-transform: uppercase; /* Deixando o título em maiúsculas para mais impacto */
+    letter-spacing: 2px;
 }
 
-/* Ajuste para alternar a posição da imagem */
+/* Descrição dos serviços */
+.servico-texto p {
+    font-size: 1.3rem; /* Ajustando o tamanho do texto para maior legibilidade */
+    line-height: 1.8; /* Aumentando o espaçamento entre as linhas */
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.8); /* Cor mais suave para o texto */
+}
+
+/* Estilo da imagem */
 .servico-container .servico-logo img {
-    width: 250px;
+    width: 280px; /* Aumentando o tamanho da imagem */
+    height: auto;
+    border-radius: 10px; /* Bordas arredondadas para a imagem */
+    transition: transform 0.3s ease; /* Efeito suave de transformação */
 }
 
 /* Para inverter a ordem da imagem e do texto */
 .servico-container.invertido {
-    flex-direction: row-reverse;
+    flex-direction: row-reverse; /* Inverte a ordem de imagem e texto */
 }
 
-/* Animação de salto */
+/* Efeito de animação de salto no texto */
 @keyframes jump {
     0% {
         transform: translateY(0);
     }
     50% {
-        transform: translateY(-10px);
+        transform: translateY(-15px); /* Aumentando o salto */
     }
     100% {
         transform: translateY(0);
     }
 }
 
-/* Aplica a animação quando o mouse passa por cima */
+/* Aplica a animação de salto no texto quando o mouse passa por cima */
 .servico-texto:hover {
     animation: jump 0.5s ease-in-out;
+    transform: scale(1.05); /* Aumenta ligeiramente o tamanho ao passar o mouse */
 }
 
-/* Seção Sobre */
+/* Efeito de hover na imagem para um destaque suave */
+.servico-container .servico-logo img:hover {
+    transform: scale(1.1); /* Aumenta o tamanho da imagem quando o mouse passa por cima */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra suave */
+}
+
+
+
+/* Estilos para a seção "Sobre" */
 .sobre {
     background: #001f4d; /* Azul escuro */
     color: white;
-    padding: 50px 20px;
+    padding: 70px 20px;
     text-align: center;
+    border-bottom: 5px solid rgba(255, 255, 255, 0.2); /* Linha de separação suave */
 }
 
 .sobre-container {
@@ -360,32 +476,51 @@ header {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 50px; /* Aumentando o espaçamento entre os itens */
     max-width: 1200px;
     margin: auto;
+    padding: 40px 0;
 }
 
+/* Texto da seção "Sobre" */
 .sobre-texto {
-    max-width: 600px;
+    max-width: 650px;
     text-align: left;
+    transition: transform 0.3s ease-in-out; /* Transição suave para animação */
 }
 
+/* Título da seção "Sobre" */
 .sobre-texto h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.sobre-texto p {
-    font-size: 1.2rem;
-    line-height: 1.6;
+    font-size: 3rem; /* Aumentando o tamanho do título */
     margin-bottom: 15px;
+    font-weight: 700;
+    text-transform: uppercase; /* Título em maiúsculas */
+    letter-spacing: 2px;
 }
 
+/* Descrição da seção "Sobre" */
+.sobre-texto p {
+    font-size: 1.3rem; /* Aumentando o tamanho do texto */
+    line-height: 1.8; /* Aumentando o espaçamento entre as linhas */
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.8); /* Cor suave para o texto */
+}
+
+/* Estilo da imagem */
 .sobre-logo img {
-    width: 250px;
+    width: 280px; /* Aumentando o tamanho da imagem */
+    height: auto;
+    border-radius: 10px; /* Bordas arredondadas para a imagem */
+    transition: transform 0.3s ease; /* Efeito suave de transformação */
 }
 
-/* Animação de bounce */
+/* Efeito de hover na imagem para destaque */
+.sobre-logo img:hover {
+    transform: scale(1.1); /* Aumenta o tamanho da imagem ao passar o mouse */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra suave */
+}
+
+/* Animação de "bounce" */
 @keyframes bounceIn {
     0% {
         opacity: 0;
@@ -393,7 +528,7 @@ header {
     }
     60% {
         opacity: 1;
-        transform: translateY(-10px);
+        transform: translateY(-15px); /* Aumentando o movimento de subida */
     }
     100% {
         opacity: 1;
@@ -401,10 +536,16 @@ header {
     }
 }
 
-/* Aplicação da animação bounce */
+/* Aplicação da animação bounce na entrada dos elementos */
 .animate {
     opacity: 0;
     animation: bounceIn 1s ease-out forwards;
+}
+
+/* Efeito de hover no texto */
+.sobre-texto:hover {
+    transform: translateY(-5px); /* Pequeno movimento de elevação no texto */
+    transition: transform 0.3s ease-out; /* Transição suave */
 }
 
 
@@ -416,13 +557,15 @@ header {
 
 /* Estilos para o footer */
 footer {
-    background: #001f4d; /* Azul escuro para combinar com o tema */
+    background: #001f4d; /* Azul escuro para manter o tema */
     color: white;
-    padding: 50px 20px;
+    padding: 60px 20px;
     font-family: 'Space Grotesk', sans-serif;
     text-align: center;
     position: relative;
     overflow: hidden;
+    border-top: 5px solid rgba(255, 255, 255, 0.2); /* Linha superior sutil */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra suave para profundidade */
 }
 
 /* Container para os itens do footer */
@@ -431,87 +574,100 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 30px;
+    gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 /* Logo do rodapé */
 .footer-logo {
-    width: 150px;
-    margin-bottom: 20px;
+    width: 160px;
+    margin-bottom: 25px;
     opacity: 0.8;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease;
 }
 
 .footer-logo:hover {
     opacity: 1;
+    transform: scale(1.05); /* Efeito de leve aumento da logo */
 }
 
 /* Título e subtítulo do rodapé */
 .footer-content h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 2.4rem;
+    margin-bottom: 15px;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    color: #00d4ff; /* Cor de destaque para o título */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para maior contraste */
 }
 
 .footer-content p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    opacity: 0.8;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto; /* Centralizando o texto */
 }
 
 /* Links de contato */
 .footer-contact {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 30px;
+    animation: fadeInLinks 1s ease-out; /* Animação de entrada dos links */
 }
 
 .footer-contact a {
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     text-decoration: none;
     font-weight: bold;
-    transition: all 0.3s ease;
     border-radius: 50px;
-    padding: 10px 20px;
+    padding: 12px 25px;
+    transition: all 0.3s ease;
+    background: transparent;
+    border: 2px solid #00d4ff; /* Borda para destacar os links */
 }
 
 .footer-contact a:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-3px);
+    background: #00d4ff; /* Cor de fundo ao passar o mouse */
+    color: #001f4d;
+    transform: translateY(-5px); /* Efeito de elevação no hover */
 }
 
 /* Ícones das redes sociais */
 .social-icons {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 30px;
+    animation: fadeInIcons 1.2s ease-out; /* Animação suave para os ícones */
 }
 
 .social-icons img {
-    width: 40px;
-    transition: transform 0.3s ease;
+    width: 45px;
+    height: 45px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
 }
 
 .social-icons img:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
+    filter: brightness(1.2); /* Aumentando o brilho ao passar o mouse */
 }
 
 /* Rodapé inferior */
 .footer-bottom {
-    background: #003366;  /* Cor de fundo sutilmente mais escura */
+    background: #003366; /* Azul escuro suave para o fundo inferior */
     color: #ddd;
-    padding: 15px 20px;
-    font-size: 1rem;
+    padding: 20px 20px;
+    font-size: 1.1rem;
     text-align: center;
-    margin-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 40px;
+    border-top: 2px solid rgba(255, 255, 255, 0.3); /* Linha fina de separação */
 }
 
 /* Animação do rodapé */
@@ -526,8 +682,32 @@ footer {
     }
 }
 
+/* Animação de entrada para os links de contato */
+@keyframes fadeInLinks {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação de entrada para os ícones de redes sociais */
+@keyframes fadeInIcons {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 footer {
-    animation: fadeInFooter 1s ease-out;
+    animation: fadeInFooter 1s ease-out; /* Animação suave ao aparecer o rodapé */
 }
 
 
@@ -536,111 +716,163 @@ footer {
 
 /* Estilos para a seção de contato */
 .contato {
-    background: #001f4d;
+    background: #001f4d; /* Cor de fundo para manter a harmonia com o tema */
     color: white;
-    padding: 50px 20px;
+    padding: 80px 20px; /* Aumentando o padding para mais espaçamento */
     text-align: center;
+    border-bottom: 5px solid rgba(255, 255, 255, 0.2); /* Linha de separação suave */
 }
 
+/* Container para os itens da seção de Contato */
 .contato-container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 50px;
     max-width: 1200px;
     margin: auto;
+    padding-top: 40px; /* Espaçamento extra superior */
 }
 
+/* Informações de Contato */
 .contato-info {
     max-width: 500px;
     text-align: left;
+    padding-right: 30px; /* Adicionando padding para maior distância */
 }
 
+/* Título das Informações de Contato */
 .contato-info h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #00d4ff;
+    font-size: 3rem; /* Aumentando o tamanho do título */
+    margin-bottom: 25px; /* Aumentando o espaço inferior */
+    color: #00d4ff; /* Cor azul claro */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
+/* Parágrafo com informações de Contato */
 .contato-info p {
-    font-size: 1.2rem;
-    line-height: 1.6;
+    font-size: 1.3rem; /* Aumentando o tamanho do texto */
+    line-height: 1.8; /* Melhorando o espaçamento entre as linhas */
     margin-bottom: 20px;
+    color: #d1d1d1; /* Cor suave para o texto */
 }
 
+/* Formulário de Contato */
 .contato-form {
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 15px; /* Bordas mais arredondadas para suavizar o visual */
+    padding: 30px;
     max-width: 600px;
     width: 100%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adicionando sombra para profundidade */
 }
 
+/* Título do Formulário */
 .contato-form h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    color: #00d4ff;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #00d4ff; /* Azul claro */
+    font-weight: bold;
 }
 
+/* Estilo para os campos do formulário */
 .contato-form form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px; /* Aumentando o espaçamento entre os campos */
 }
 
+/* Rótulos dos campos */
 .contato-form label {
     font-size: 1.2rem;
+    font-weight: bold; /* Destacando os rótulos */
 }
 
+/* Estilo dos inputs e textarea */
 .contato-form input,
 .contato-form textarea {
-    padding: 10px;
-    font-size: 1rem;
+    padding: 12px;
+    font-size: 1.1rem; /* Aumentando o tamanho da fonte */
     border: 2px solid #00d4ff;
-    border-radius: 8px;
+    border-radius: 10px;
     background-color: transparent;
     color: white;
     width: 100%;
+    transition: border-color 0.3s ease-in-out; /* Efeito de transição suave ao focar */
 }
 
+/* Efeito de foco nos campos de entrada */
+.contato-form input:focus,
+.contato-form textarea:focus {
+    border-color: #00a1e6; /* Mudando a cor da borda quando o campo recebe foco */
+    outline: none; /* Removendo a borda padrão do navegador */
+}
+
+/* Botão de Envio */
 .contato-form button {
     padding: 15px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     border: none;
     background-color: #00d4ff;
     color: white;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    font-weight: bold;
 }
 
+/* Efeito de hover no botão */
 .contato-form button:hover {
     background-color: #001f4d;
+    transform: translateY(-5px); /* Efeito de elevação */
+}
+
+/* Efeito de foco suave no formulário */
+@keyframes fadeInForm {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contato-form {
+    animation: fadeInForm 1s ease-out;
 }
 
 
+/* Estilos para a seção "Por que Escolher?" */
 .porque-escolher {
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
     background-color: #001f4d; /* Cor de fundo para combinar com o tema */
     color: white; /* Cor do texto para garantir boa legibilidade */
-    animation: fadeIn 1s ease-out; /* Animação de entrada */
+    animation: fadeIn 1s ease-out;
+    border-bottom: 5px solid rgba(255, 255, 255, 0.2); /* Adicionando uma linha de separação suave */
 }
 
+/* Título da seção "Por que Escolher?" */
 .porque-escolher h2 {
-    font-size: 2.5rem;
+    font-size: 3rem; /* Aumentando o tamanho do título para mais impacto */
     color: #00d4ff; /* Usando o tom azul claro do seu site */
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     text-transform: uppercase;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: 2px; /* Espaçamento maior entre as letras */
     animation: fadeInTitle 1s ease-out;
 }
 
+/* Descrição da seção "Por que Escolher?" */
 .porque-escolher p {
-    font-size: 1.2rem;
+    font-size: 1.3rem; /* Aumentando o tamanho do texto para maior legibilidade */
     color: #d1d1d1; /* Um tom mais claro de cinza para o texto secundário */
-    margin-bottom: 30px;
+    margin-bottom: 40px; /* Aumentando o espaço entre o parágrafo e os itens */
+    line-height: 1.8; /* Melhorando o espaçamento entre as linhas */
     animation: fadeInText 1.5s ease-out;
 }
 
@@ -649,57 +881,60 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
+    gap: 40px; /* Aumentando o espaçamento entre os itens */
     animation: slideUp 1s ease-out;
+    max-width: 1200px; /* Limitando a largura máxima */
+    margin: auto;
+    padding: 40px 0; /* Adicionando espaçamento superior e inferior */
 }
 
 /* Item individual */
 .porque-item {
-    background: #002f5f; /* Usando uma cor azul escuro para os itens */
-    padding: 30px 20px;
-    border-radius: 15px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background: #002f5f; /* Cor azul escuro para os itens */
+    padding: 40px 25px;
+    border-radius: 20px; /* Bordas mais arredondadas para um efeito mais suave */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Aumentando o tamanho da sombra */
     text-align: center;
-    width: 250px;
+    width: 280px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 300px;
+    height: 320px;
 }
 
 /* Efeito de hover para os itens */
 .porque-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px); /* Aumentando o efeito de elevação */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4); /* Efeito de sombra mais forte */
 }
 
 /* Ajustes no ícone dentro de cada item */
 .porque-item img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 20px;
+    width: 90px; /* Aumentando o tamanho do ícone */
+    height: 90px;
+    margin-bottom: 25px;
     transition: transform 0.3s ease;
 }
 
 /* Efeito de zoom no ícone */
 .porque-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.2); /* Aumentando o zoom do ícone */
 }
 
 /* Título de cada item */
 .porque-item h3 {
-    font-size: 1.3rem;
+    font-size: 1.5rem; /* Aumentando o tamanho do título para destacar mais */
     color: #00d4ff; /* Usando a cor azul clara para os títulos */
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     font-weight: bold;
 }
 
 /* Descrição de cada item */
 .porque-item p {
-    font-size: 1rem;
-    color: #d1d1d1; /* Usando um tom claro de cinza para o texto de descrição */
+    font-size: 1.1rem; /* Ajustando o tamanho do texto para uma melhor leitura */
+    color: #d1d1d1; /* Cor suave para o texto de descrição */
 }
 
 /* Animações para entrada da seção */
