@@ -6,49 +6,96 @@
     font-family: 'Space Grotesk', sans-serif;
 }
 
-/* Para dispositivos móveis, a ordem dos elementos será invertida */
+/* Estilos para o menu de navegação */
 @media (max-width: 768px) {
+    /* Navbar */
     .navbar {
         flex-direction: row-reverse; /* Coloca a logo à direita */
-        gap: 10px;
+        gap: 20px;
+        align-items: center;
+        padding: 10px 20px;
+        justify-content: space-between;
+        position: relative;
     }
 
-    /* Exibe o botão de menu hambúrguer na parte esquerda */
+    /* Botão de Menu Hambúrguer */
     .menu-hamburguer {
         display: block;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1001;
+        transition: transform 0.3s ease;
     }
 
-    /* Esconde o menu original e coloca ele abaixo da navbar */
+    .menu-hamburguer div {
+        background-color: white;
+        width: 30px;
+        height: 3px;
+        margin: 6px 0;
+        border-radius: 5px;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Quando o menu está ativo, o hambúrguer se transforma em um "X" */
+    .menu-hamburguer.active div:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .menu-hamburguer.active div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-hamburguer.active div:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* Esconde o menu padrão */
     .navbar .menu {
         display: none;
         flex-direction: column;
-        text-align: center;
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
         position: absolute;
-        top: 60px;
+        top: 70px; /* Ajuste para o menu abaixo da navbar */
         left: 0;
-        padding: 20px 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transform: translateY(-20px);
+        opacity: 0;
+        transition: all 0.3s ease;
     }
 
     /* Menu ativo quando o botão for clicado */
     .navbar .menu.active {
-        display: block;
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
     }
 
+    /* Estilo dos itens do menu */
     .menu a {
-        font-size: 1.5rem;
-        padding: 15px;
-        text-transform: uppercase;
+        font-size: 1.4rem;
+        padding: 15px 0;
         color: white;
         text-decoration: none;
-        transition: all 0.3s ease;
-        display: block;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-align: center;
+        transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     .menu a:hover {
-        background-color: rgba(255, 255, 255, 0.3);
-        transform: translateY(-5px);
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+    }
+
+    /* Ícones do menu (se houver) */
+    .menu .icon {
+        font-size: 2rem;
+        margin-right: 10px;
     }
 }
 
@@ -65,8 +112,8 @@ body {
 header {
     font-family: 'Space Grotesk', sans-serif;
     width: 100%;
-    height: 600px; /* Altura padrão */
-    background: linear-gradient(135deg, #001f4d, #00d4ff); /* Gradiente de azul escuro para azul claro */
+    height: 600px; /* Altura do cabeçalho */
+    background: linear-gradient(135deg, #001f4d, #004b75); /* Gradiente mais suave, azul escuro para azul mais claro */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -74,9 +121,22 @@ header {
     justify-content: center;
     color: white;
     text-align: center;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6); /* Sombra mais intensa para melhorar o contraste */
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6); /* Sombra para melhorar a legibilidade */
     overflow: hidden;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.2); /* Linha suave na parte inferior */
+    border-bottom: 4px solid rgba(255, 255, 255, 0.2); /* Linha mais visível na parte inferior */
+    animation: fadeInHeader 1s ease-out; /* Efeito de fade-in para o cabeçalho */
+}
+
+/* Animação de fade-in para o cabeçalho */
+@keyframes fadeInHeader {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Navbar fixa no topo */
@@ -85,67 +145,130 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 12px 5%; /* Ajustando o padding da navbar */
+    padding: 15px 5%; /* Ajuste no padding para um melhor posicionamento */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(0, 0, 0, 0.6); /* Fundo transparente e levemente escuro para a navbar */
-    backdrop-filter: blur(15px); /* Aumentando o desfoque para um efeito mais suave */
+    background: rgba(0, 0, 0, 0.7); /* Fundo mais escuro e suave */
+    backdrop-filter: blur(20px); /* Efeito de desfoque suave para a navbar */
     z-index: 1000;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3); /* Linha de separação suave */
-    height: 70px; /* Ajustando a altura da navbar para dar mais espaço */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.25); /* Linha de separação suave */
+    height: 80px; /* Aumento na altura para um melhor layout */
+    transition: all 0.3s ease; /* Suavização de transições */
 }
 
-/* Logo da Navbar (ajustando para ficar proporcional) */
+/* Logo da Navbar (ajustando para mais visibilidade) */
 .navbar img {
-    width: 70px; /* Ajustando o tamanho da logo para maior destaque */
+    width: 75px; /* Logo com um tamanho moderado */
     height: auto;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* Efeito de hover para logo */
 .navbar img:hover {
-    transform: scale(1.1); /* Aumentando o tamanho da logo ao passar o mouse */
+    transform: scale(1.15); /* Logo um pouco maior ao passar o mouse */
+    opacity: 0.9;
 }
 
 /* Menu da Navbar (links) */
 .menu {
     display: flex;
-    gap: 30px; /* Aumentando o espaçamento entre os links */
+    gap: 35px; /* Maior espaçamento entre os links */
 }
 
+/* Estilo dos links do menu */
 .menu a {
     color: white;
     text-decoration: none;
-    font-weight: 600; /* Leve aumento no peso da fonte */
-    font-size: 1.1rem; /* Ajustando o tamanho da fonte para maior legibilidade */
-    padding: 10px 18px; /* Aumentando o padding para links mais confortáveis */
-    border-radius: 30px; /* Tornando os bordos mais arredondados */
-    transition: all 0.3s ease;
+    font-weight: 600; /* Peso de fonte para mais destaque */
+    font-size: 1.15rem; /* Ajuste de tamanho da fonte */
+    padding: 12px 20px; /* Aumento no padding para links mais confortáveis */
+    border-radius: 30px; /* Bordas mais arredondadas para os links */
+    transition: all 0.3s ease, transform 0.3s ease;
     display: inline-block;
-    text-transform: uppercase; /* Tornando o texto maiúsculo */
+    text-transform: uppercase;
+    position: relative;
 }
 
 /* Efeito de hover para links da navbar */
 .menu a:hover {
-    background: rgba(255, 255, 255, 0.2); /* Fundo suave ao passar o mouse */
-    color: #00d4ff; /* Mudando a cor para o azul claro */
-    transform: translateY(-5px); /* Levantando o link mais durante o hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adicionando uma leve sombra para destacar mais o link */
+    background: rgba(255, 255, 255, 0.2); /* Fundo suave para links ao passar o mouse */
+    color: #00d4ff; /* Mudança de cor para o azul claro */
+    transform: scale(1.1); /* Efeito de aumento no link */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra para destacar o link */
 }
 
-/* Adicionando uma animação suave no carregamento da navbar */
-.navbar {
-    animation: slideIn 1s ease-out;
-}
-
-@keyframes slideIn {
+/* Animação suave na entrada da navbar */
+@keyframes slideInNavbar {
     from {
         transform: translateY(-100%);
     }
     to {
         transform: translateY(0);
     }
+}
+
+/* Navbar com animação suave */
+.navbar {
+    animation: slideInNavbar 0.8s ease-out;
+}
+
+/* Navbar em dispositivos móveis */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px 5%;
+        height: auto; /* Ajustando a altura da navbar para o mobile */
+    }
+
+    /* Menu em dispositivos móveis */
+    .menu {
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    /* Estilo dos links no menu para mobile */
+    .menu a {
+        font-size: 1.3rem;
+        padding: 12px 25px;
+    }
+
+    .navbar img {
+        width: 60px; /* Ajustando a logo para dispositivos móveis */
+    }
+
+    /* Botão de menu hambúrguer no mobile */
+    .menu-hamburguer {
+        display: block; /* Exibe o botão no mobile */
+        cursor: pointer;
+    }
+
+    .menu-hamburguer span {
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        margin: 6px 0;
+        transition: 0.3s;
+    }
+}
+
+/* Efeito ao clicar no menu hambúrguer */
+.menu-hamburguer.active span:nth-child(1) {
+    transform: rotate(-45deg);
+    position: relative;
+    top: 6px;
+}
+
+.menu-hamburguer.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-hamburguer.active span:nth-child(3) {
+    transform: rotate(45deg);
+    position: relative;
+    top: -6px;
 }
 
 
