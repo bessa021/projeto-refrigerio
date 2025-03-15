@@ -18,7 +18,7 @@ const scrollbarContainer = document.querySelector('.scrollbar-container');
 // Detecta se o dispositivo é móvel
 const isMobile = window.innerWidth <= 768; // Ajuste conforme necessário para o seu design
 
-// Se for um dispositivo móvel, não ativa a barra de rolagem personalizada
+// Se não for um dispositivo móvel, ativa a barra de rolagem personalizada
 if (!isMobile) {
     // Ajusta a posição da bolinha de rolagem com base na rolagem da página
     window.addEventListener('scroll', () => {
@@ -58,6 +58,9 @@ if (!isMobile) {
         document.removeEventListener('mousemove', onMouseMove);
         document.removeEventListener('mouseup', onMouseUp);
     }
+} else {
+    // No caso de dispositivos móveis, não mostramos a barra de rolagem personalizada
+    document.querySelector('.scrollbar-container').style.display = 'none';
 }
 
 

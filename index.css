@@ -18,29 +18,34 @@ body {
 
 
 
-/* Estilos para o container da barra de rolagem lateral */
+/* Barra de rolagem personalizada */
 .scrollbar-container {
     position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
+    right: 10px;
+    top: 50%;
     width: 10px;
-    background-color: rgba(0, 0, 0, 0.2); /* Fundo escuro */
-    border-radius: 10px;
-    z-index: 9999;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    display: block; /* Exibe a barra de rolagem em desktops */
 }
 
-/* Estilos para a bolinha de rolagem */
-.scrollbar-handle {
-    width: 100%;
-    height: 40px; /* Tamanho da bolinha */
-    background-color: #00d4ff; /* Cor da bolinha */
-    border-radius: 20px;
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    transition: background-color 0.3s ease;
+/* Apenas mostra a barra de rolagem em telas grandes */
+@media (max-width: 768px) {
+    .scrollbar-container {
+        display: none; /* Esconde a barra em dispositivos móveis */
+    }
 }
+
+.scrollbar-handle {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background-color: #00d4ff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 
 /* Efeito de hover na bolinha */
 .scrollbar-handle:hover {
