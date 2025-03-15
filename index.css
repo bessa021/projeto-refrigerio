@@ -403,7 +403,7 @@ header {
     padding: 40px 40px 45px;
     border-radius: 20px;
     max-width: 700px;
-    animation: fadeIn 1.5s ease-in-out; /* Apenas a animação de entrada */
+    animation: fadeIn 1.5s ease-in-out;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     position: relative;
@@ -424,22 +424,21 @@ header {
 /* Ajustes para telas pequenas (mobile) */
 @media (max-width: 768px) {
     .header-content {
-        max-width: 90%;
-        padding: 20px 20px 25px;
-        border-radius: 15px;
-        margin-top: 30px;
-        animation: fadeIn 1.5s ease-in-out; /* Animacao de entrada no mobile também */
+        max-width: 90%; /* Reduzindo a largura para caber melhor na tela */
+        padding: 10px 15px 15px; /* Reduzindo o padding mais ainda para caber melhor */
+        border-radius: 10px; /* Menor arredondamento das bordas */
+        margin-top: 15px; /* Ajustando a margem superior */
     }
 
     .header-content h1 {
-        font-size: 2.5rem;
-        letter-spacing: 1px;
-        margin-bottom: 15px;
+        font-size: 1.8rem; /* Reduzindo ainda mais o tamanho do título */
+        letter-spacing: 0.8px; /* Ajustando o espaçamento das letras */
+        margin-bottom: 12px; /* Menor espaço abaixo do título */
     }
 
     .header-content p {
-        font-size: 1.4rem;
-        margin-bottom: 20px;
+        font-size: 1.1rem; /* Menor tamanho de fonte para o subtítulo */
+        margin-bottom: 15px; /* Menor margem inferior */
     }
 }
 
