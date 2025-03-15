@@ -108,12 +108,11 @@ body {
 
 
 
-/* Estilos para o cabeçalho */
 header {
     font-family: 'Space Grotesk', sans-serif;
     width: 100%;
     height: 600px; /* Altura do cabeçalho */
-    background: linear-gradient(135deg, #001f4d, #004b75); /* Gradiente mais suave, azul escuro para azul mais claro */
+    background: linear-gradient(135deg, #001f4d, #004b75); /* Gradiente suave de azul */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -124,10 +123,9 @@ header {
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6); /* Sombra para melhorar a legibilidade */
     overflow: hidden;
     border-bottom: 4px solid rgba(255, 255, 255, 0.2); /* Linha mais visível na parte inferior */
-    animation: fadeInHeader 1s ease-out; /* Efeito de fade-in para o cabeçalho */
 }
 
-/* Animação de fade-in para o cabeçalho */
+/* Removendo qualquer animação de fade-in */
 @keyframes fadeInHeader {
     from {
         opacity: 0;
@@ -138,6 +136,11 @@ header {
         transform: translateY(0);
     }
 }
+
+header {
+    background: linear-gradient(135deg, rgba(0, 31, 77, 0.8), rgba(0, 75, 117, 0.8)); /* Gradiente com leve transparência */
+}
+
 
 /* Navbar fixa no topo */
 .navbar {
@@ -399,11 +402,11 @@ header {
 
 /* Estilos para o conteúdo do cabeçalho */
 .header-content {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6); /* Cor de fundo fixa */
     padding: 40px 40px 45px;
     border-radius: 20px;
     max-width: 700px;
-    animation: fadeIn 1.5s ease-in-out;
+    animation: fadeIn 1.5s ease-in-out; /* Animação de fadeIn */
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     position: relative;
@@ -424,21 +427,22 @@ header {
 /* Ajustes para telas pequenas (mobile) */
 @media (max-width: 768px) {
     .header-content {
-        max-width: 90%; /* Reduzindo a largura para caber melhor na tela */
-        padding: 10px 15px 15px; /* Reduzindo o padding mais ainda para caber melhor */
+        max-width: 90%; /* Aumenta a largura para caber melhor na tela */
+        padding: 15px 10px 15px; /* Reduzindo ainda mais o padding */
         border-radius: 10px; /* Menor arredondamento das bordas */
-        margin-top: 15px; /* Ajustando a margem superior */
+        margin-top: 30px; /* Aumentando a margem superior para afastar mais do topo */
+        max-height: 200px; /* Reduzindo a altura */
     }
 
     .header-content h1 {
-        font-size: 1.8rem; /* Reduzindo ainda mais o tamanho do título */
-        letter-spacing: 0.8px; /* Ajustando o espaçamento das letras */
-        margin-bottom: 12px; /* Menor espaço abaixo do título */
+        font-size: 1.4rem; /* Diminuindo o tamanho do título */
+        letter-spacing: 0.5px; /* Ajustando o espaçamento das letras */
+        margin-bottom: 8px; /* Menor espaço abaixo do título */
     }
 
     .header-content p {
-        font-size: 1.1rem; /* Menor tamanho de fonte para o subtítulo */
-        margin-bottom: 15px; /* Menor margem inferior */
+        font-size: 1rem; /* Menor tamanho de fonte para o subtítulo */
+        margin-bottom: 10px; /* Menor margem inferior */
     }
 }
 
@@ -449,6 +453,7 @@ header {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Intensificando a sombra para dar um efeito de destaque */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suavizando a transição */
 }
+
 
 /* Responsividade para dispositivos móveis (máx. 768px) */
 @media (max-width: 768px) {
