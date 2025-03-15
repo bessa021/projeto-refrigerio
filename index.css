@@ -399,34 +399,14 @@ header {
 
 /* Estilos para o conteúdo do cabeçalho */
 .header-content {
-    background: rgba(0, 0, 0, 0.6); /* Aumentando a opacidade para dar mais contraste ao texto */
-    padding: 40px 40px 45px; /* Ajustando o padding para um espaçamento confortável */
-    border-radius: 20px; /* Aumentando o arredondamento das bordas para um visual mais suave */
-    max-width: 700px; /* Aumentando o tamanho máximo para dar mais espaço ao conteúdo */
-    animation: fadeIn 1.5s ease-in-out; /* Efeito de fade-in já aplicado */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); /* Adicionando sombra suave para destacar o conteúdo */
-    backdrop-filter: blur(10px); /* Adicionando um desfoque suave no fundo */
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px 40px 45px;
+    border-radius: 20px;
+    max-width: 700px;
+    animation: fadeIn 1.5s ease-in-out; /* Apenas a animação de entrada */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
     position: relative;
-}
-
-/* Título maior e destacado */
-.header-content h1 {
-    font-size: 4rem; /* Aumentando o tamanho do título para mais destaque */
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 3px; /* Aumentando o espaçamento entre as letras para dar mais ênfase */
-    font-weight: 700; /* Dando mais peso ao título */
-    color: #ffffff; /* Garantindo que o título fique em branco */
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Sombra sutil para aumentar o contraste */
-}
-
-/* Subtítulo com espaçamento */
-.header-content p {
-    font-size: 1.6rem; /* Aumentando o tamanho da fonte do subtítulo */
-    line-height: 1.8; /* Aumentando o espaçamento entre as linhas para melhor leitura */
-    opacity: 0.85; /* Leve transparência para um efeito mais suave */
-    color: #d1d1d1; /* Mudando a cor do subtítulo para um tom mais suave de cinza */
-    margin-bottom: 25px;
 }
 
 /* Efeito de entrada */
@@ -440,6 +420,29 @@ header {
         transform: translateY(0);
     }
 }
+
+/* Ajustes para telas pequenas (mobile) */
+@media (max-width: 768px) {
+    .header-content {
+        max-width: 90%;
+        padding: 20px 20px 25px;
+        border-radius: 15px;
+        margin-top: 30px;
+        animation: fadeIn 1.5s ease-in-out; /* Animacao de entrada no mobile também */
+    }
+
+    .header-content h1 {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+
+    .header-content p {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+}
+
 
 /* Adicionando um efeito de hover no conteúdo */
 .header-content:hover {
