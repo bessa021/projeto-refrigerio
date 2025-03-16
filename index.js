@@ -55,10 +55,15 @@ function toggleMenu() {
     menu.classList.toggle('active');
 }
 
+// Seleciona o botão de hambúrguer
 const menuHamburguer = document.querySelector('.menu-hamburguer');
+
+// Seleciona o menu que será mostrado/ocultado
 const menu = document.querySelector('.navbar .menu');
 
+// Adiciona o evento de clique no botão de hambúrguer
 menuHamburguer.addEventListener('click', () => {
+    // Alterna a classe 'active' no hambúrguer e no menu
+    menuHamburguer.classList.toggle('active');
     menu.classList.toggle('active');
 });
-

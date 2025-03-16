@@ -13,9 +13,20 @@
         flex-direction: row-reverse; /* Coloca a logo à direita */
         gap: 20px;
         align-items: center;
-        padding: 10px 20px;
+        padding: 15px 25px; /* Ajuste para mais espaço interno */
         justify-content: space-between;
         position: relative;
+        background: rgba(0, 0, 0, 0.8); /* Fundo mais suave */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra mais sutil para profundidade */
+        z-index: 1000;
+        transition: background 0.3s ease; /* Transição suave */
+    }
+
+    /* Logo da Navbar - Tamanho maior para visibilidade */
+    .navbar img {
+        width: 190px; /* Aumentando o tamanho da logo para mobile */
+        height: auto;
+        transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     /* Botão de Menu Hambúrguer */
@@ -25,16 +36,18 @@
         border: none;
         cursor: pointer;
         z-index: 1001;
-        transition: transform 0.3s ease;
+        padding: 0; /* Remover qualquer padding */
+        margin: 0; /* Remover margens */
     }
 
+    /* Linhas do Menu Hambúrguer */
     .menu-hamburguer div {
         background-color: white;
-        width: 30px;
-        height: 3px;
-        margin: 6px 0;
+        width: 10px; /* Aumentando o tamanho das linhas */
+        height: 2px; /* Aumentando a altura das linhas */
         border-radius: 5px;
         transition: transform 0.3s ease, background-color 0.3s ease;
+        margin: 2px 0; /* Distância maior entre as linhas */
     }
 
     /* Quando o menu está ativo, o hambúrguer se transforma em um "X" */
@@ -50,18 +63,24 @@
         transform: translateY(-9px) rotate(-45deg);
     }
 
+    /* Efeito de hover */
+    .menu-hamburguer:hover {
+        transform: scale(1.2); /* Aumenta o tamanho ao passar o mouse */
+        transition: transform 0.3s ease;
+    }
+
     /* Esconde o menu padrão */
     .navbar .menu {
         display: none;
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 70px; /* Ajuste para o menu abaixo da navbar */
+        top: 80px; /* Ajuste para o menu abaixo da navbar */
         left: 0;
         background-color: rgba(0, 0, 0, 0.9);
-        padding: 20px;
+        padding: 30px 20px; /* Mais espaço ao redor do menu */
         border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Aumento da sombra para dar destaque */
         transform: translateY(-20px);
         opacity: 0;
         transition: all 0.3s ease;
@@ -76,8 +95,8 @@
 
     /* Estilo dos itens do menu */
     .menu a {
-        font-size: 1.4rem;
-        padding: 15px 0;
+        font-size: 1.6rem; /* Aumentando a fonte para maior legibilidade */
+        padding: 18px 0; /* Aumentando o espaçamento entre os itens */
         color: white;
         text-decoration: none;
         text-transform: uppercase;
@@ -85,19 +104,174 @@
         letter-spacing: 1px;
         text-align: center;
         transition: background-color 0.3s ease, transform 0.3s ease;
+        border-radius: 8px; /* Adicionando bordas arredondadas aos itens */
     }
 
     .menu a:hover {
         background-color: rgba(255, 255, 255, 0.2);
-        transform: translateY(-3px);
+        transform: translateY(-5px);
     }
 
     /* Ícones do menu (se houver) */
     .menu .icon {
-        font-size: 2rem;
-        margin-right: 10px;
+        font-size: 2.5rem; /* Aumentando o tamanho dos ícones */
+        margin-right: 12px;
+        transition: transform 0.3s ease;
+    }
+
+    .menu .icon:hover {
+        transform: scale(1.2); /* Ícones aumentam ao passar o mouse */
     }
 }
+
+@media (min-width: 769px) {
+    /* Logo da Navbar - Tamanho maior para desktop */
+    .navbar img {
+        width: 180px; /* Tamanho maior da logo em telas grandes */
+        height: auto;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+}
+
+
+/* Definições globais */
+body {
+    background-color: #f5f5f5;
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilização do Header */
+header {
+    width: 100%;
+    height: 600px; /* Altura do cabeçalho */
+    background: linear-gradient(135deg, rgba(0, 31, 77, 0.9), rgba(0, 75, 117, 0.9)); /* Gradiente suave de azul */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6); /* Sombra para melhorar a legibilidade */
+    overflow: hidden;
+    border-bottom: 4px solid rgba(255, 255, 255, 0.2); /* Linha mais visível na parte inferior */
+}
+
+/* Removendo a animação de entrada */
+@keyframes fadeInHeader {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header {
+    /* A animação de entrada foi removida, o estilo permanece o mesmo */
+}
+
+/* Navbar fixa no topo */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+    height: 80px;
+    transition: all 0.3s ease;
+}
+
+/* Logo da Navbar */
+.navbar img {
+    width: 150px;
+    height: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.navbar img:hover {
+    transform: scale(1.15);
+    opacity: 0.9;
+}
+
+/* Menu da Navbar */
+.menu {
+    display: flex;
+    gap: 40px; /* Aumentando o espaçamento entre os itens */
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    border-radius: 30px;
+    transition: all 0.3s ease, transform 0.3s ease;
+    text-transform: uppercase;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #00d4ff;
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Navbar em dispositivos móveis */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px 5%;
+        height: auto; /* Ajustando a altura da navbar para o mobile */
+    }
+
+    /* Menu em dispositivos móveis */
+    .menu {
+        flex-direction: column;
+        gap: 25px;
+        margin-top: 20px;
+    }
+
+    /* Estilo dos links no menu para mobile */
+    .menu a {
+        font-size: 1.4rem;
+        padding: 15px 25px;
+        border-radius: 8px;
+    }
+
+    .navbar img {
+        width: 150px; /* Ajustando a logo para dispositivos móveis */
+    }
+
+    /* Botão de menu hambúrguer no mobile */
+    .menu-hamburguer {
+        display: block; /* Exibe o botão no mobile */
+        cursor: pointer;
+    }
+
+    .menu-hamburguer span {
+        width: 35px;
+        height: 4px;
+        background-color: white;
+        margin: 8px 0;
+        transition: 0.3s;
+    }
+}
+
 
 
 /* Definições globais */
@@ -137,10 +311,55 @@ header {
     }
 }
 
+/* Estilização do Header */
 header {
-    background: linear-gradient(135deg, rgba(0, 31, 77, 0.8), rgba(0, 75, 117, 0.8)); /* Gradiente com leve transparência */
+    font-family: 'Space Grotesk', sans-serif;
+    width: 100%;
+    height: 600px;
+    background: linear-gradient(135deg, rgba(0, 31, 77, 0.9), rgba(0, 75, 117, 0.9));
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    border-bottom: 4px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Adicionando ícones de ar-condicionado e geladeira */
+.header-icons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.header-icons img {
+    width: 50px;
+    height: auto;
+    opacity: 0.8;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.header-icons img:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+@keyframes fadeInHeader {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* Navbar fixa no topo */
 .navbar {
@@ -148,60 +367,54 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 15px 5%; /* Ajuste no padding para um melhor posicionamento */
+    padding: 15px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(0, 0, 0, 0.7); /* Fundo mais escuro e suave */
-    backdrop-filter: blur(20px); /* Efeito de desfoque suave para a navbar */
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(20px);
     z-index: 1000;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.25); /* Linha de separação suave */
-    height: 80px; /* Aumento na altura para um melhor layout */
-    transition: all 0.3s ease; /* Suavização de transições */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+    height: 80px;
+    transition: all 0.3s ease;
 }
 
-/* Logo da Navbar (ajustando para mais visibilidade) */
+/* Logo da Navbar */
 .navbar img {
-    width: 75px; /* Logo com um tamanho moderado */
+    width: 150px;
     height: auto;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Efeito de hover para logo */
 .navbar img:hover {
-    transform: scale(1.15); /* Logo um pouco maior ao passar o mouse */
+    transform: scale(1.15);
     opacity: 0.9;
 }
 
-/* Menu da Navbar (links) */
+/* Menu da Navbar */
 .menu {
     display: flex;
-    gap: 35px; /* Maior espaçamento entre os links */
+    gap: 35px;
 }
 
-/* Estilo dos links do menu */
 .menu a {
     color: white;
     text-decoration: none;
-    font-weight: 600; /* Peso de fonte para mais destaque */
-    font-size: 1.15rem; /* Ajuste de tamanho da fonte */
-    padding: 12px 20px; /* Aumento no padding para links mais confortáveis */
-    border-radius: 30px; /* Bordas mais arredondadas para os links */
+    font-weight: 600;
+    font-size: 1.15rem;
+    padding: 12px 20px;
+    border-radius: 30px;
     transition: all 0.3s ease, transform 0.3s ease;
-    display: inline-block;
     text-transform: uppercase;
-    position: relative;
 }
 
-/* Efeito de hover para links da navbar */
 .menu a:hover {
-    background: rgba(255, 255, 255, 0.2); /* Fundo suave para links ao passar o mouse */
-    color: #00d4ff; /* Mudança de cor para o azul claro */
-    transform: scale(1.1); /* Efeito de aumento no link */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra para destacar o link */
+    background: rgba(255, 255, 255, 0.2);
+    color: #00d4ff;
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Animação suave na entrada da navbar */
 @keyframes slideInNavbar {
     from {
         transform: translateY(-100%);
@@ -211,10 +424,10 @@ header {
     }
 }
 
-/* Navbar com animação suave */
 .navbar {
     animation: slideInNavbar 0.8s ease-out;
 }
+
 
 /* Navbar em dispositivos móveis */
 @media (max-width: 768px) {
@@ -239,7 +452,7 @@ header {
     }
 
     .navbar img {
-        width: 60px; /* Ajustando a logo para dispositivos móveis */
+        width: 150px; /* Ajustando a logo para dispositivos móveis */
     }
 
     /* Botão de menu hambúrguer no mobile */
@@ -257,85 +470,98 @@ header {
     }
 }
 
-/* Efeito ao clicar no menu hambúrguer */
-.menu-hamburguer.active span:nth-child(1) {
-    transform: rotate(-45deg);
-    position: relative;
-    top: 6px;
-}
-
-.menu-hamburguer.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-hamburguer.active span:nth-child(3) {
-    transform: rotate(45deg);
-    position: relative;
-    top: -6px;
-}
-
-
 /* Estilos para o botão do menu hambúrguer em telas pequenas */
 .menu-hamburguer {
     display: none; /* Inicialmente escondido em telas grandes */
-    font-size: 2rem; /* Aumentando o tamanho para tornar o ícone mais visível */
+    font-size: 2.5rem; /* Tamanho maior para melhorar a visualização */
     background: transparent;
     border: none;
     color: white;
     cursor: pointer;
-    padding: 10px;
+    padding: 12px;
     z-index: 1001;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
     position: relative;
+    outline: none; /* Remove qualquer borda ao clicar */
 }
 
-.menu-hamburguer:before,
-.menu-hamburguer:after,
-.menu-hamburguer div {
-    content: '';
+/* Estilo das linhas do botão hambúrguer */
+.menu-hamburguer span {
     display: block;
-    height: 3px;
+    height: 1px; /* Aumentando a altura das linhas para maior impacto */
     background-color: white;
-    transition: all 0.3s ease;
     border-radius: 5px;
     margin: 6px 0;
-    width: 30px;
+    width: 40px; /* Aumentando a largura para mais visibilidade */
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Transforma o ícone em "X" quando ativo */
-.menu-hamburguer.active:before {
-    transform: rotate(45deg);
-    top: 7px;
+/* Efeito ao clicar no menu hambúrguer (transição para "X") */
+.menu-hamburguer.active span:nth-child(1) {
+    transform: rotate(-45deg) translateY(10px); /* Ajuste suave para transformar em "X" */
 }
 
-.menu-hamburguer.active:after {
-    transform: rotate(-45deg);
-    top: -7px;
+.menu-hamburguer.active span:nth-child(2) {
+    opacity: 0; /* A linha do meio desaparece */
 }
 
-.menu-hamburguer.active div {
-    opacity: 0; /* Esconde a linha do meio */
+.menu-hamburguer.active span:nth-child(3) {
+    transform: rotate(45deg) translateY(-10px); /* Ajuste suave para transformar em "X" */
 }
 
 /* Efeito de hover para o botão de menu hambúrguer */
 .menu-hamburguer:hover {
-    transform: scale(1.2); /* Aumenta o tamanho ao passar o mouse */
+    transform: scale(1.1); /* Aumenta o tamanho de forma suave */
     transition: transform 0.3s ease;
 }
+
+/* Exibição do botão de menu hambúrguer em telas pequenas (mobile) */
+@media (max-width: 768px) {
+    .menu-hamburguer {
+        display: block; /* Torna o hambúrguer visível no mobile */
+        font-size: 3rem; /* Aumentando o tamanho do ícone */
+    }
+
+    /* Mudança da cor e estilo ao passar o mouse */
+    .menu-hamburguer:hover span {
+        background-color: #00d4ff; /* Cor de destaque ao passar o mouse */
+    }
+
+    /* Estilo das linhas do hambúrguer durante o clique */
+    .menu-hamburguer.active span {
+        background-color: #ff6347; /* Cor de destaque ao ativar (cor laranja-avermelhada) */
+    }
+}
+
 
 /* Responsividade para dispositivos móveis (máx. 768px) */
 @media (max-width: 768px) {
     /* Exibindo o botão do menu hambúrguer em telas pequenas */
     .menu-hamburguer {
         display: block; /* Só aparece em telas menores que 768px */
+        cursor: pointer;
+        z-index: 1001;
+        width: 40px; /* Largura do botão de hambúrguer ajustada */
+        height: 20px; /* Altura do botão ajustada */
+        padding: 0; /* Remover padding */
     }
 
     /* Ajuste da navbar para dispositivos móveis */
     .navbar {
         flex-direction: row;  /* Organiza a logo e o menu hambúrguer na mesma linha */
         justify-content: space-between;
-        padding: 12px 5%;
-        height: 55px; /* Menor altura na versão mobile */
+        padding: 10px 15px; /* Menos padding para melhor aproveitamento do espaço */
+        height: 60px; /* Ajusta a altura da navbar na versão mobile */
+        background: rgba(0, 0, 0, 0.7); /* Fundo sutil para a navbar */
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Sombra suave para destacar */
+        align-items: center; /* Alinha logo e hambúrguer verticalmente */
+    }
+
+    /* Logo da Navbar */
+    .navbar img {
+        width: 100px; /* Tamanho adequado para a logo */
+        height: auto;
+        transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     /* Excluindo o menu normal em dispositivos móveis */
@@ -343,53 +569,95 @@ header {
         display: none;  /* Menu inicialmente escondido */
         flex-direction: column;
         position: absolute;
-        top: 70px;
+        top: 75px;
         left: 0;
         width: 100%;
         background: rgba(0, 0, 0, 0.9); /* Fundo mais escuro e suave para o menu */
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Adicionando sombra para dar destaque */
         border-top: 3px solid #00d4ff; /* Linha superior fina para contraste */
         padding: 20px 0;
+        border-radius: 10px; /* Borda arredondada */
+        transition: transform 0.3s ease; /* Suavizando a entrada */
+        transform: translateY(-100%); /* Inicia escondido */
     }
 
+    /* Quando o menu está ativo, aparece com transição suave */
     .navbar .menu.active {
         display: flex; /* Menu visível quando ativado */
+        transform: translateY(0); /* Faz a animação de entrada */
     }
 
     .navbar .menu a {
         color: white;
         text-decoration: none;
         padding: 15px 20px;
-        font-size: 1.5rem;
+        font-size: 1.6rem; /* Aumentando o tamanho da fonte */
         font-weight: bold;
         text-align: center;
-        transition: background-color 0.3s ease;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     /* Efeito de hover para os links do menu em telas pequenas */
     .navbar .menu a:hover {
         background-color: #00d4ff; /* Cor de fundo ao passar o mouse */
         color: #001f4d; /* Mudando a cor do texto para um contraste mais forte */
+        border-radius: 10px; /* Bordas arredondadas nos links */
     }
 
     /* Ajuste da altura da logo para celulares */
     .navbar img {
-        width: 50px; /* Reduzindo o tamanho da logo para dispositivos móveis */
+        width: 80px; /* Aumentando um pouco o tamanho da logo para visibilidade */
         height: auto;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Espaçamento entre a logo e o menu */
+    .navbar > img {
+        margin-right: 15px; /* Espaço para evitar que fiquem muito grudados */
+    }
+
+    /* Ajustes no menu hambúrguer */
+    .menu-hamburguer {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Quando o menu está ativo, o hambúrguer se transforma em um "X" */
+    .menu-hamburguer.active div:nth-child(1) {
+        transform: rotate(45deg) translateY(9px); /* Transição mais suave */
+    }
+
+    .menu-hamburguer.active div:nth-child(2) {
+        opacity: 0; /* Linha do meio desaparecendo */
+    }
+
+    .menu-hamburguer.active div:nth-child(3) {
+        transform: rotate(-45deg) translateY(-9px); /* Transição suave para o "X" */
+    }
+
+    /* Efeito de hover para o botão de menu hambúrguer */
+    .menu-hamburguer:hover {
+        transform: scale(1.1); /* Aumenta suavemente o tamanho ao passar o mouse */
+        transition: transform 0.3s ease;
     }
 }
+
 
 /* O menu padrão (desktop) continua visível normalmente */
 @media (min-width: 769px) {
     .navbar .menu {
         display: flex; /* Exibe o menu normalmente em telas grandes */
-        gap: 20px; /* Aumentando o espaçamento entre os links */
+        gap: 25px; /* Aumentando o espaçamento entre os links */
+        justify-content: flex-start; /* Alinhando o menu à esquerda */
     }
 
     .navbar .menu a {
         font-size: 1.2rem;
-        padding: 12px 18px;
+        padding: 12px 20px;
         border-radius: 25px; /* Bordas arredondadas para os links do menu */
         transition: background-color 0.3s ease;
     }
@@ -398,21 +666,45 @@ header {
         background-color: #00d4ff; /* Efeito de hover com cor suave */
         color: #001f4d;
     }
+
+    /* Ajuste da logo na versão desktop */
+    .navbar img {
+        width: 90px; /* Logo maior em telas grandes */
+        height: auto;
+    }
 }
+
 
 /* Estilos para o conteúdo do cabeçalho */
 .header-content {
-    background: rgba(0, 0, 0, 0.6); /* Cor de fundo fixa */
-    padding: 40px 40px 45px;
-    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.6); /* Transparente escuro */
+    padding: 40px 50px 50px; /* Aumentei o padding para mais espaçamento */
+    border-radius: 25px; /* Aumento no border-radius para um estilo mais suave */
     max-width: 700px;
-    animation: fadeIn 1.5s ease-in-out; /* Animação de fadeIn */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
+    animation: fadeIn 1.5s ease-in-out;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* Sombra mais forte */
+    backdrop-filter: blur(12px); /* Aumento do blur para dar mais foco ao conteúdo */
     position: relative;
+    color: #fff; /* Adicionando cor branca para o texto */
+    font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
+    text-align: center; /* Alinhamento centralizado para o texto */
+    border: 2px solid #fff; /* Bordas brancas para dar um destaque extra */
 }
 
-/* Efeito de entrada */
+.header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://refrigeracaobm.com.br/wp-content/uploads/2025/02/Logo-Psicologa-Azul-E-Roxo-7.png');
+    background-repeat: repeat;
+    background-size: 80px;
+    opacity: 0.3; /* Reduzi a opacidade para dar mais foco no conteúdo */
+    z-index: -1;
+}
+
+/* Animação de fade-in para um efeito suave */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -424,139 +716,111 @@ header {
     }
 }
 
-/* Ajustes para telas pequenas (mobile) */
+/* Estilos para dispositivos menores */
 @media (max-width: 768px) {
     .header-content {
-        max-width: 90%; /* Aumenta a largura para caber melhor na tela */
-        padding: 15px 10px 15px; /* Reduzindo ainda mais o padding */
-        border-radius: 10px; /* Menor arredondamento das bordas */
-        margin-top: 30px; /* Aumentando a margem superior para afastar mais do topo */
-        max-height: 200px; /* Reduzindo a altura */
+        max-width: 90%; /* Mais responsividade */
+        padding: 20px 15px 25px; /* Ajuste no padding */
+        border-radius: 15px; /* Arredondamento um pouco mais suave */
+        margin-top: 20px;
+        max-height: 250px; /* Ajuste na altura máxima */
     }
 
     .header-content h1 {
-        font-size: 1.4rem; /* Diminuindo o tamanho do título */
-        letter-spacing: 0.5px; /* Ajustando o espaçamento das letras */
-        margin-bottom: 8px; /* Menor espaço abaixo do título */
+        font-size: 1.5rem; /* Fontes maiores para melhor leitura em dispositivos menores */
+        letter-spacing: 1px;
+        margin-bottom: 10px;
     }
 
     .header-content p {
-        font-size: 1rem; /* Menor tamanho de fonte para o subtítulo */
-        margin-bottom: 10px; /* Menor margem inferior */
+        font-size: 1.1rem;
+        margin-bottom: 15px;
     }
 }
 
-
-/* Adicionando um efeito de hover no conteúdo */
+/* Efeito de hover */
 .header-content:hover {
-    transform: scale(1.02); /* Aumentando ligeiramente o tamanho do conteúdo ao passar o mouse */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Intensificando a sombra para dar um efeito de destaque */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suavizando a transição */
+    transform: scale(1.05); /* Aumento sutil do conteúdo no hover */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); /* Sombra mais intensa no hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(0, 0, 0, 0.7); /* Mudança de fundo no hover para efeito de destaque */
 }
 
-
-/* Responsividade para dispositivos móveis (máx. 768px) */
-@media (max-width: 768px) {
-    /* Navbar ajustada para celulares */
-    .navbar {
-        flex-direction: row;  /* Organiza a logo e o menu hambúrguer na mesma linha */
-        justify-content: space-between;
-        padding: 10px 5%;
-        height: 60px; /* Reduz a altura da navbar */
-    }
-
-    /* Ajusta o menu hambúrguer para a esquerda e a logo para a direita */
-    .menu-hamburguer {
-        order: 1;  /* Coloca o menu hambúrguer à esquerda */
-    }
-
-    .navbar .menu {
-        display: none;  /* Menu inicialmente escondido */
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.8); /* Fundo escuro para o menu */
-    }
-
-    .navbar .menu.active {
-        display: flex; /* Menu visível quando ativado */
-    }
-
-    /* Logo ajustada para o celular */
-    .navbar img {
-        width: 80px; /* Reduz a largura da logo */
-    }
-
-    /* Ajuste da altura do cabeçalho para celulares */
-    header {
-        height: 400px;  /* Reduz a altura do cabeçalho em dispositivos móveis */
-    }
-
-    /* Ajusta o título e o parágrafo no cabeçalho para telas menores */
-    .header-content h1 {
-        font-size: 2.5rem; /* Ajusta o tamanho do título */
-    }
-
-    .header-content p {
-        font-size: 1.2rem; /* Ajusta o tamanho do parágrafo */
-    }
+/* Estilo para títulos */
+.header-content h1 {
+    font-size: 2rem; /* Aumento do tamanho da fonte do título */
+    font-weight: bold; /* Destacar o título */
+    color: #00b3e6; /* Cor vibrante */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* Sombra no texto para dar mais contraste */
 }
 
-
-
+/* Estilo para o parágrafo */
+.header-content p {
+    font-size: 1.2rem; /* Tamanho de fonte maior para maior legibilidade */
+    color: #fff; /* Cor branca no parágrafo */
+    line-height: 1.6; /* Maior espaçamento entre linhas para melhor leitura */
+    margin-top: 15px; /* Espaçamento maior entre título e texto */
+}
 
 /* Estilos para a seção de serviços */
 .servicos {
-    background: #001f4d; /* Mantendo o fundo escuro */
+    background: linear-gradient(135deg, #001f4d, #003a63); /* Gradiente suave de azul */
     color: white;
-    padding: 60px 20px;
+    padding: 80px 20px;
     text-align: center;
-    border-bottom: 5px solid rgba(255, 255, 255, 0.2); /* Adicionando uma linha de separação suave */
+    border-bottom: 5px solid rgba(255, 255, 255, 0.2); /* Linha de separação suave */
+    position: relative;
+    overflow: hidden;
 }
 
+/* Para o conteúdo da seção de serviços */
 .servico-container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 50px; /* Aumentando o espaçamento entre os itens */
+    gap: 60px; /* Aumentando o espaçamento entre os itens */
     max-width: 1200px;
     margin: auto;
     padding: 40px 0;
+    position: relative;
 }
 
 /* Texto dos serviços */
 .servico-texto {
     max-width: 650px; /* Aumentando a largura para dar mais espaço ao texto */
     text-align: left;
-    transition: transform 0.3s ease-in-out; /* Transição suave para animação */
+    transition: opacity 0.3s ease;
+    margin: 0 20px;
 }
 
 /* Título dos serviços */
 .servico-texto h2 {
-    font-size: 3rem; /* Aumentando o tamanho do título */
-    margin-bottom: 15px;
+    font-size: 3.5rem; /* Aumentando o tamanho do título */
+    margin-bottom: 20px;
     font-weight: 700;
-    text-transform: uppercase; /* Deixando o título em maiúsculas para mais impacto */
-    letter-spacing: 2px;
+    text-transform: uppercase; /* Título em maiúsculas */
+    letter-spacing: 3px;
+    color: #00d4ff; /* Cor vibrante para o título */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); /* Sombra para destacar o título */
 }
 
 /* Descrição dos serviços */
 .servico-texto p {
-    font-size: 1.3rem; /* Ajustando o tamanho do texto para maior legibilidade */
-    line-height: 1.8; /* Aumentando o espaçamento entre as linhas */
+    font-size: 1.4rem;
+    line-height: 1.8;
     margin-bottom: 20px;
-    color: rgba(255, 255, 255, 0.8); /* Cor mais suave para o texto */
+    color: rgba(255, 255, 255, 0.85); /* Cor suave para o texto */
+    opacity: 0.9;
 }
 
 /* Estilo da imagem */
 .servico-container .servico-logo img {
-    width: 280px; /* Aumentando o tamanho da imagem */
+    width: 300px; /* Aumentando o tamanho da imagem */
     height: auto;
-    border-radius: 10px; /* Bordas arredondadas para a imagem */
-    transition: transform 0.3s ease; /* Efeito suave de transformação */
+    border-radius: 15px; /* Bordas arredondadas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efeito suave de transformação */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra sutil para destacar a imagem */
 }
 
 /* Para inverter a ordem da imagem e do texto */
@@ -564,30 +828,97 @@ header {
     flex-direction: row-reverse; /* Inverte a ordem de imagem e texto */
 }
 
-/* Efeito de animação de salto no texto */
-@keyframes jump {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-15px); /* Aumentando o salto */
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-/* Aplica a animação de salto no texto quando o mouse passa por cima */
-.servico-texto:hover {
-    animation: jump 0.5s ease-in-out;
-    transform: scale(1.05); /* Aumenta ligeiramente o tamanho ao passar o mouse */
-}
-
 /* Efeito de hover na imagem para um destaque suave */
 .servico-container .servico-logo img:hover {
-    transform: scale(1.1); /* Aumenta o tamanho da imagem quando o mouse passa por cima */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra suave */
+    transform: scale(1.1); /* Aumenta o tamanho da imagem */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Aumenta a sombra para dar profundidade */
 }
+
+/* Estilo para o fundo de serviço com imagem */
+.servico-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.pexels.com/photo/white-air-conditioner-turned-on-4001026/');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15; /* Opacidade suave */
+    transform: translate(-50%, -50%);
+    z-index: -1; /* Coloca a imagem de fundo atrás do conteúdo */
+}
+
+/* Estilo do container */
+.servico-container {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de hover no container */
+.servico-container:hover {
+    transform: translateY(-10px); /* Leve elevação do container */
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2); /* Sombra mais forte */
+}
+
+/* Estilo da borda do container */
+.servico-container .servico-logo {
+    border-radius: 15px; /* Bordas arredondadas para o container */
+    overflow: hidden; /* Garante que a imagem e o conteúdo fiquem dentro do contêiner */
+}
+
+/* ------------------------ MOBILE STYLES ------------------------ */
+
+@media (max-width: 768px) {
+
+    /* Ajuste de padding e espaçamento */
+    .servicos {
+        padding: 40px 10px; /* Reduzindo o padding para não ficar muito colado nas bordas */
+    }
+
+    /* Alinhamento e espaçamento no container */
+    .servico-container {
+        flex-direction: column; /* Colocando os itens um abaixo do outro */
+        gap: 30px; /* Menos espaço entre os itens */
+        padding: 20px;
+    }
+
+    /* Ajuste no texto dos serviços */
+    .servico-texto {
+        max-width: 100%; /* Reduzindo o espaço máximo */
+        padding: 0 15px; /* Padding extra nas laterais */
+        text-align: center; /* Centralizando o texto */
+    }
+
+    /* Ajustes no título */
+    .servico-texto h2 {
+        font-size: 2.5rem; /* Menor tamanho para títulos */
+        margin-bottom: 15px;
+    }
+
+    /* Ajuste na descrição */
+    .servico-texto p {
+        font-size: 1.2rem; /* Tamanho de fonte mais adequado para mobile */
+        margin-bottom: 15px; /* Menos espaçamento no final */
+    }
+
+    /* Ajuste no tamanho da imagem */
+    .servico-container .servico-logo img {
+        width: 250px; /* Imagem menor no mobile */
+    }
+
+    /* Efeito de hover nas imagens */
+    .servico-container .servico-logo img:hover {
+        transform: scale(1.05); /* Menos zoom para não ficar exagerado no mobile */
+    }
+
+    /* Background de serviço com imagem */
+    .servico-container::before {
+        opacity: 0.1; /* Menos opacidade para não sobrecarregar no mobile */
+    }
+
+}
+
 
 
 
@@ -595,9 +926,41 @@ header {
 .sobre {
     background: #001f4d; /* Azul escuro */
     color: white;
-    padding: 70px 20px;
+    padding: 80px 20px; /* Mais espaçamento para a seção */
     text-align: center;
-    border-bottom: 5px solid rgba(255, 255, 255, 0.2); /* Linha de separação suave */
+    border-bottom: 5px solid rgba(255, 255, 255, 0.3); /* Linha de separação mais sutil */
+    position: relative;
+    overflow: hidden; /* Evita que o conteúdo ultrapasse a área da seção */
+}
+
+/* Adicionando um fundo de padrão sutil no fundo */
+.sobre:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.05);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: pulse 10s infinite ease-in-out;
+}
+
+/* Animação suave para a secção de fundo */
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.1;
+    }
 }
 
 .sobre-container {
@@ -609,44 +972,50 @@ header {
     max-width: 1200px;
     margin: auto;
     padding: 40px 0;
+    z-index: 1;
 }
 
 /* Texto da seção "Sobre" */
 .sobre-texto {
-    max-width: 650px;
+    max-width: 700px;
     text-align: left;
     transition: transform 0.3s ease-in-out; /* Transição suave para animação */
 }
 
 /* Título da seção "Sobre" */
 .sobre-texto h2 {
-    font-size: 3rem; /* Aumentando o tamanho do título */
-    margin-bottom: 15px;
+    font-size: 3.5rem; /* Aumentando o tamanho do título */
+    margin-bottom: 20px;
     font-weight: 700;
     text-transform: uppercase; /* Título em maiúsculas */
-    letter-spacing: 2px;
+    letter-spacing: 3px; /* Mais espaçamento entre as letras */
+    color: #00d4ff; /* Cor vibrante */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra suave para destacar */
 }
 
 /* Descrição da seção "Sobre" */
 .sobre-texto p {
-    font-size: 1.3rem; /* Aumentando o tamanho do texto */
+    font-size: 1.4rem; /* Aumentando o tamanho do texto */
     line-height: 1.8; /* Aumentando o espaçamento entre as linhas */
-    margin-bottom: 20px;
-    color: rgba(255, 255, 255, 0.8); /* Cor suave para o texto */
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.85); /* Cor suave para o texto */
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Estilo da imagem */
 .sobre-logo img {
-    width: 280px; /* Aumentando o tamanho da imagem */
+    width: 320px; /* Aumentando o tamanho da imagem */
     height: auto;
-    border-radius: 10px; /* Bordas arredondadas para a imagem */
-    transition: transform 0.3s ease; /* Efeito suave de transformação */
+    border-radius: 15px; /* Bordas arredondadas para a imagem */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efeito suave de transformação e sombra */
 }
 
 /* Efeito de hover na imagem para destaque */
 .sobre-logo img:hover {
     transform: scale(1.1); /* Aumenta o tamanho da imagem ao passar o mouse */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra suave */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Adiciona uma sombra mais pronunciada */
 }
 
 /* Animação de "bounce" */
@@ -673,14 +1042,31 @@ header {
 
 /* Efeito de hover no texto */
 .sobre-texto:hover {
-    transform: translateY(-5px); /* Pequeno movimento de elevação no texto */
-    transition: transform 0.3s ease-out; /* Transição suave */
+    transform: translateY(-10px); /* Movimento mais pronunciado para dar destaque */
+    color: #00d4ff; /* Mudando a cor do texto para o destaque */
+    transition: transform 0.3s ease-out, color 0.3s ease-out; /* Transição suave para a cor e movimento */
 }
 
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    .sobre-container {
+        flex-direction: column;
+        padding: 20px 10px;
+    }
 
+    .sobre-logo img {
+        width: 250px; /* Ajustando o tamanho da imagem */
+    }
 
+    .sobre-texto h2 {
+        font-size: 2.5rem; /* Reduzindo o tamanho do título */
+        letter-spacing: 1px;
+    }
 
-
+    .sobre-texto p {
+        font-size: 1.2rem; /* Ajustando o tamanho da descrição */
+    }
+}
 
 
 
@@ -839,6 +1225,55 @@ footer {
     animation: fadeInFooter 1s ease-out; /* Animação suave ao aparecer o rodapé */
 }
 
+/* ------------------------ MOBILE STYLES ------------------------ */
+@media (max-width: 768px) {
+    /* Ajustes na logo do footer */
+    .footer-logo {
+        width: 120px; /* Reduzindo o tamanho da logo */
+        margin-bottom: 15px;
+    }
+
+    /* Ajustes no título do footer */
+    .footer-content h2 {
+        font-size: 2rem; /* Menor tamanho para o título */
+        letter-spacing: 1px; /* Menos espaçamento entre as letras */
+    }
+
+    /* Ajustes no texto de descrição */
+    .footer-content p {
+        font-size: 1rem; /* Reduzindo o tamanho da fonte */
+        margin-bottom: 20px; /* Menos espaçamento inferior */
+    }
+
+    /* Ajustes nos links de contato */
+    .footer-contact {
+        gap: 20px; /* Menos espaçamento entre os links */
+        flex-direction: column; /* Organizando os links em coluna */
+        margin-top: 20px; /* Menos espaço acima */
+    }
+
+    .footer-contact a {
+        font-size: 1.1rem; /* Reduzindo o tamanho da fonte dos links */
+        padding: 10px 20px; /* Ajustando o padding */
+    }
+
+    /* Ajustes nos ícones das redes sociais */
+    .social-icons {
+        gap: 20px; /* Menos espaçamento entre os ícones */
+    }
+
+    .social-icons img {
+        width: 35px; /* Reduzindo o tamanho dos ícones */
+        height: 35px;
+    }
+
+    /* Ajustes no footer inferior */
+    .footer-bottom {
+        font-size: 1rem; /* Reduzindo o tamanho da fonte */
+        padding: 15px 10px; /* Menos padding */
+    }
+}
+
 
 
 
@@ -872,17 +1307,18 @@ footer {
 
 /* Título das Informações de Contato */
 .contato-info h2 {
-    font-size: 3rem; /* Aumentando o tamanho do título */
+    font-size: 3.5rem; /* Aumentando o tamanho do título */
     margin-bottom: 25px; /* Aumentando o espaço inferior */
     color: #00d4ff; /* Cor azul claro */
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Adicionando uma leve sombra ao título */
 }
 
 /* Parágrafo com informações de Contato */
 .contato-info p {
-    font-size: 1.3rem; /* Aumentando o tamanho do texto */
+    font-size: 1.4rem; /* Aumentando o tamanho do texto */
     line-height: 1.8; /* Melhorando o espaçamento entre as linhas */
     margin-bottom: 20px;
     color: #d1d1d1; /* Cor suave para o texto */
@@ -892,16 +1328,17 @@ footer {
 .contato-form {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 15px; /* Bordas mais arredondadas para suavizar o visual */
-    padding: 30px;
+    padding: 40px;
     max-width: 600px;
     width: 100%;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adicionando sombra para profundidade */
+    transition: all 0.3s ease;
 }
 
 /* Título do Formulário */
 .contato-form h2 {
     font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: #00d4ff; /* Azul claro */
     font-weight: bold;
 }
@@ -922,8 +1359,8 @@ footer {
 /* Estilo dos inputs e textarea */
 .contato-form input,
 .contato-form textarea {
-    padding: 12px;
-    font-size: 1.1rem; /* Aumentando o tamanho da fonte */
+    padding: 15px;
+    font-size: 1.2rem; /* Aumentando o tamanho da fonte */
     border: 2px solid #00d4ff;
     border-radius: 10px;
     background-color: transparent;
@@ -942,7 +1379,7 @@ footer {
 /* Botão de Envio */
 .contato-form button {
     padding: 15px;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     border: none;
     background-color: #00d4ff;
     color: white;
@@ -950,6 +1387,7 @@ footer {
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: bold;
+    width: 100%; /* Botão ocupa toda a largura */
 }
 
 /* Efeito de hover no botão */
@@ -974,6 +1412,66 @@ footer {
     animation: fadeInForm 1s ease-out;
 }
 
+/* ------------------------ MOBILE STYLES ------------------------ */
+
+@media (max-width: 768px) {
+    /* Ajustes de espaçamento para mobile */
+    .contato {
+        padding: 60px 20px; /* Ajustando padding */
+    }
+
+    /* Container de Contato com layout ajustado */
+    .contato-container {
+        flex-direction: column; /* Alinhamento em coluna para dispositivos móveis */
+        gap: 30px; /* Menos espaçamento entre os itens */
+        padding-top: 20px;
+    }
+
+    /* Ajustes na parte de informações de contato */
+    .contato-info {
+        max-width: 100%;
+        text-align: center; /* Centralizando o texto no mobile */
+        padding-right: 0;
+    }
+
+    /* Título das informações */
+    .contato-info h2 {
+        font-size: 2.8rem; /* Reduzindo o tamanho do título */
+    }
+
+    /* Descrição dos serviços */
+    .contato-info p {
+        font-size: 1.2rem; /* Ajustando o tamanho do texto */
+        margin-bottom: 20px;
+    }
+
+    /* Formulário de Contato ajustado para mobile */
+    .contato-form {
+        padding: 30px;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* Tamanho do título do formulário */
+    .contato-form h2 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+    }
+
+    /* Ajustes nos campos de formulário */
+    .contato-form input,
+    .contato-form textarea {
+        font-size: 1.1rem; /* Menor fonte nos campos */
+    }
+
+    /* Ajustes no botão */
+    .contato-form button {
+        font-size: 1.2rem;
+        padding: 12px;
+    }
+}
+
+
 
 /* Estilos para a seção "Por que Escolher?" */
 .porque-escolher {
@@ -982,27 +1480,63 @@ footer {
     background-color: #001f4d; /* Cor de fundo para combinar com o tema */
     color: white; /* Cor do texto para garantir boa legibilidade */
     animation: fadeIn 1s ease-out;
-    border-bottom: 5px solid rgba(255, 255, 255, 0.2); /* Adicionando uma linha de separação suave */
+    border-bottom: 5px solid rgba(255, 255, 255, 0.3); /* Linha de separação mais sutil */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Adicionando um fundo de padrão animado suave */
+.porque-escolher:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: pulse 8s infinite ease-in-out;
+}
+
+/* Animação suave de "pulse" no fundo */
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.1;
+    }
 }
 
 /* Título da seção "Por que Escolher?" */
 .porque-escolher h2 {
-    font-size: 3rem; /* Aumentando o tamanho do título para mais impacto */
+    font-size: 3.5rem; /* Aumentando o tamanho do título */
     color: #00d4ff; /* Usando o tom azul claro do seu site */
     margin-bottom: 30px;
     text-transform: uppercase;
     font-weight: bold;
-    letter-spacing: 2px; /* Espaçamento maior entre as letras */
+    letter-spacing: 3px; /* Espaçamento maior entre as letras */
     animation: fadeInTitle 1s ease-out;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Adicionando sombra no título */
 }
 
 /* Descrição da seção "Por que Escolher?" */
 .porque-escolher p {
-    font-size: 1.3rem; /* Aumentando o tamanho do texto para maior legibilidade */
-    color: #d1d1d1; /* Um tom mais claro de cinza para o texto secundário */
-    margin-bottom: 40px; /* Aumentando o espaço entre o parágrafo e os itens */
-    line-height: 1.8; /* Melhorando o espaçamento entre as linhas */
+    font-size: 1.3rem; /* Aumentando o tamanho do texto */
+    color: #d1d1d1; /* Tom mais claro de cinza */
+    margin-bottom: 40px;
+    line-height: 1.8;
     animation: fadeInText 1.5s ease-out;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Container para os itens da seção */
@@ -1010,19 +1544,19 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 40px; /* Aumentando o espaçamento entre os itens */
+    gap: 50px; /* Aumentando o espaçamento entre os itens */
     animation: slideUp 1s ease-out;
-    max-width: 1200px; /* Limitando a largura máxima */
+    max-width: 1200px;
     margin: auto;
-    padding: 40px 0; /* Adicionando espaçamento superior e inferior */
+    padding: 40px 0;
 }
 
 /* Item individual */
 .porque-item {
     background: #002f5f; /* Cor azul escuro para os itens */
     padding: 40px 25px;
-    border-radius: 20px; /* Bordas mais arredondadas para um efeito mais suave */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Aumentando o tamanho da sombra */
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     text-align: center;
     width: 280px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1031,12 +1565,31 @@ footer {
     justify-content: space-between;
     align-items: center;
     height: 320px;
+    position: relative;
+    overflow: hidden;
 }
 
 /* Efeito de hover para os itens */
 .porque-item:hover {
-    transform: translateY(-10px); /* Aumentando o efeito de elevação */
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4); /* Efeito de sombra mais forte */
+    transform: translateY(-15px); /* Aumentando o efeito de elevação */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Adicionando bordas e sombras dinâmicas nos itens */
+.porque-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.porque-item:hover::before {
+    transform: scale(1);
 }
 
 /* Ajustes no ícone dentro de cada item */
@@ -1044,26 +1597,28 @@ footer {
     width: 90px; /* Aumentando o tamanho do ícone */
     height: 90px;
     margin-bottom: 25px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Efeito de zoom no ícone */
 .porque-item:hover img {
     transform: scale(1.2); /* Aumentando o zoom do ícone */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Sombra suave no ícone */
 }
 
 /* Título de cada item */
 .porque-item h3 {
-    font-size: 1.5rem; /* Aumentando o tamanho do título para destacar mais */
-    color: #00d4ff; /* Usando a cor azul clara para os títulos */
+    font-size: 1.5rem;
+    color: #00d4ff;
     margin-bottom: 15px;
     font-weight: bold;
+    text-transform: uppercase; /* Colocando os títulos em maiúsculas */
 }
 
 /* Descrição de cada item */
 .porque-item p {
-    font-size: 1.1rem; /* Ajustando o tamanho do texto para uma melhor leitura */
-    color: #d1d1d1; /* Cor suave para o texto de descrição */
+    font-size: 1.1rem;
+    color: #d1d1d1;
 }
 
 /* Animações para entrada da seção */
@@ -1110,3 +1665,50 @@ footer {
         transform: translateY(0);
     }
 }
+
+/* ------------------------ MOBILE STYLES ------------------------ */
+@media (max-width: 768px) {
+    /* Ajustes no título da seção */
+    .porque-escolher h2 {
+        font-size: 2.8rem; /* Reduzindo o tamanho do título */
+        letter-spacing: 1px; /* Diminui o espaçamento entre as letras no mobile */
+    }
+
+    /* Ajustes no texto de descrição */
+    .porque-escolher p {
+        font-size: 1.2rem; /* Menor tamanho do texto */
+        margin-bottom: 30px; /* Menos espaço abaixo */
+        max-width: 90%; /* Aumentando a largura para ficar mais preenchido */
+    }
+
+    /* Ajustes no container */
+    .porque-container {
+        gap: 30px; /* Menos espaçamento entre os itens */
+        padding: 20px 0; /* Ajuste no padding */
+    }
+
+    /* Ajustes nos itens individuais */
+    .porquê-item {
+        width: 100%; /* Itens ocupam toda a largura disponível */
+        max-width: 300px; /* Limitando a largura máxima */
+        padding: 30px 20px; /* Menos padding */
+        height: auto; /* Altura automática para caber em diferentes tamanhos */
+    }
+
+    /* Ajuste no ícone */
+    .porquê-item img {
+        width: 80px; /* Menor ícone */
+        height: 80px; /* Ajustando a altura também */
+    }
+
+    /* Ajuste do texto dentro de cada item */
+    .porquê-item h3 {
+        font-size: 1.3rem; /* Menor tamanho de fonte */
+    }
+
+    /* Ajuste do texto de cada item */
+    .porquê-item p {
+        font-size: 1rem; /* Reduzindo o tamanho da descrição */
+    }
+}
+
