@@ -214,6 +214,70 @@ header .header-content {
     margin: 0 auto;
 }
 
+/* Animação dos flocos de neve */
+@keyframes snowflakes {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(600px) rotate(360deg);
+    }
+}
+
+/* Criação dos flocos de neve */
+.snowflakes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.snowflakes img {
+    position: absolute;
+    width: 30px; /* Tamanho dos flocos */
+    animation: snowflakes 10s linear infinite;
+    opacity: 0.8;
+}
+
+.snowflakes img:nth-child(odd) {
+    animation-duration: 12s;
+}
+
+.snowflakes img:nth-child(even) {
+    animation-duration: 15s;
+}
+
+.snowflakes img:nth-child(3n) {
+    animation-duration: 18s;
+}
+
+/* Geração de flocos de neve */
+.snowflakes img:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+.snowflakes img:nth-child(2) {
+    left: 30%;
+    animation-delay: 2s;
+}
+.snowflakes img:nth-child(3) {
+    left: 50%;
+    animation-delay: 4s;
+}
+.snowflakes img:nth-child(4) {
+    left: 70%;
+    animation-delay: 6s;
+}
+.snowflakes img:nth-child(5) {
+    left: 90%;
+    animation-delay: 8s;
+}
+
+
 
 /* Navbar fixa no topo */
 .navbar {
