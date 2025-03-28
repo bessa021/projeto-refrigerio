@@ -8,7 +8,6 @@
 
 /* Estilização para o menu de navegação */
 @media (max-width: 768px) {
-    /* Navbar */
     .navbar {
         display: flex;
         flex-direction: row-reverse; /* Logo à direita */
@@ -33,124 +32,6 @@
         width: 180px; /* Aumentando o tamanho da logo */
         height: auto;
         transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    /* Botão de Menu Hambúrguer */
-    .menu-hamburguer {
-        display: block;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        z-index: 1001;
-        padding: 0;
-        margin: 0;
-        transition: transform 0.3s ease;
-    }
-
-    /* Linhas do Menu Hambúrguer */
-    .menu-hamburguer div {
-        background-color: white;
-        width: 20px; /* Aumentando o tamanho das linhas */
-        height: 3px; /* Aumentando a altura das linhas */
-        transition: transform 0.3s ease, background-color 0.3s ease;
-        margin: 5px 0; /* Distância maior entre as linhas */
-    }
-
-    /* Quando o menu está ativo, o hambúrguer se transforma em um "X" */
-    .menu-hamburguer.active div:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .menu-hamburguer.active div:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-hamburguer.active div:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-    /* Efeito de hover no botão */
-    .menu-hamburguer:hover {
-        transform: scale(1.2); /* Aumenta o tamanho do botão ao passar o mouse */
-    }
-
-    /* Esconde o menu padrão */
-    .navbar .menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 80px; /* Ajuste para o menu abaixo da navbar */
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.9);
-        padding: 40px 20px; /* Mais espaço ao redor do menu */
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Aumento da sombra */
-        transform: translateY(-20px);
-        opacity: 0;
-        transition: all 0.3s ease;
-    }
-
-    /* Menu ativo quando o botão for clicado */
-    .navbar .menu.active {
-        display: flex;
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    /* Estilo dos itens do menu */
-    .menu a {
-        font-size: 1.8rem; /* Tamanho da fonte maior */
-        padding: 20px 0; /* Aumentando o espaçamento entre os itens */
-        color: white;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-weight: bold;
-        letter-spacing: 1px;
-        text-align: center;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        margin-bottom: 15px; /* Maior espaçamento entre os itens */
-    }
-
-    .menu a:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-        transform: translateY(-5px);
-    }
-
-    /* Ícones do menu (se houver) */
-    .menu .icon {
-        font-size: 2.5rem; /* Tamanho maior para os ícones */
-        margin-right: 12px;
-        transition: transform 0.3s ease;
-    }
-
-    .menu .icon:hover {
-        transform: scale(1.3); /* Ícones aumentam ao passar o mouse */
-    }
-
-    /* Adicionando efeito de transição suave no menu */
-    .menu a, .menu .icon {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeIn 0.5s forwards; /* Animação suave de fade-in */
-    }
-
-    .menu a:nth-child(1), .menu .icon:nth-child(1) {
-        animation-delay: 0.1s;
-    }
-
-    .menu a:nth-child(2), .menu .icon:nth-child(2) {
-        animation-delay: 0.2s;
-    }
-
-    .menu a:nth-child(3), .menu .icon:nth-child(3) {
-        animation-delay: 0.3s;
-    }
-
-    @keyframes fadeIn {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
     }
 }
 
@@ -484,6 +365,7 @@ header .header-content {
     border-radius: 30px;
     transition: all 0.3s ease, transform 0.3s ease;
     text-transform: uppercase;
+    animation: fadeIn 0.5s forwards; /* Animação suave de fade-in */
 }
 
 .menu a:hover {
@@ -633,6 +515,7 @@ header {
     outline: none; /* Remove qualquer borda ao clicar */
 }
 
+
 /* Estilo das linhas do botão hambúrguer */
 .menu-hamburguer span {
     display: block;
@@ -642,11 +525,6 @@ header {
     margin: 6px 0;
     width: 40px; /* Aumentando a largura para mais visibilidade */
     transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* Efeito ao clicar no menu hambúrguer (transição para "X") */
-.menu-hamburguer.active span:nth-child(1) {
-    transform: rotate(-45deg) translateY(10px); /* Ajuste suave para transformar em "X" */
 }
 
 .menu-hamburguer.active span:nth-child(2) {
@@ -843,6 +721,296 @@ header {
     margin-top: 15px; /* Espaçamento maior entre título e texto */
 }
 
+
+
+/* Estilos para a seção "Sobre" */
+.sobre {
+    background: #001f4d;
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    border-bottom: 5px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Adicionando um fundo de padrão sutil no fundo */
+.sobre:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.05);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: pulse 10s infinite ease-in-out;
+}
+
+/* Animação suave para a seção de fundo */
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.1;
+    }
+}
+
+.sobre-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 0;
+    z-index: 1;
+}
+
+/* Texto da seção Sobre */
+.sobre-texto {
+    max-width: 700px;
+    text-align: left;
+    transition: transform 0.3s ease-in-out; 
+}
+
+/* Título da seção Sobre */
+.sobre-texto h2 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #00d4ff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Descrição da seção Sobre */
+.sobre-texto p {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilo da imagem */
+.sobre-logo img {
+    width: 320px;
+    height: auto;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de hover na imagem para destaque */
+.sobre-logo img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Animação de "bounce" */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicação da animação bounce na entrada dos elementos */
+.animate {
+    opacity: 0;
+    animation: bounceIn 1s ease-out forwards;
+}
+
+/* Efeito de hover no texto */
+.sobre-texto:hover {
+    transform: translateY(-10px);
+    color: #00d4ff;
+    transition: transform 0.3s ease-out, color 0.3s ease-out; 
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    .sobre-container {
+        flex-direction: column;
+        padding: 20px 10px;
+    }
+
+    .sobre-logo img {
+        width: 200px;
+    }
+
+    .sobre-texto h2 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+    }
+
+    .sobre-texto p {
+        font-size: 1rem;
+    }
+}
+
+
+
+/* Estilização da seção "Por que Escolher?" com o layout da imagem e as cores do código original */
+.porque-escolher {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #001f4d;
+    color: white;
+}
+
+.porque-escolher h2 {
+    font-size: 3rem;
+    color: #00d4ff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.porque-escolher p {
+    font-size: 1.3rem;
+    color: #d1d1d1;
+    margin-bottom: 40px;
+    line-height: 1.8;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Container de cards */
+.porque-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+/* Card individual */
+.porque-item {
+    position: relative;
+    width: 270px;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 20px; 
+}
+
+/* Adiciona uma imagem de fundo diferente para cada card */
+.porque-item.imagem-1 {
+    background-image: url('./imagem/Foto1.png'); 
+}
+
+.porque-item.imagem-2 {
+    background-image: url('./imagem/Foto2.png'); 
+}
+
+.porque-item.imagem-3 {
+    background-image: url('./imagem/Foto3.png'); 
+}
+
+/* Estilo do conteúdo dentro do card */
+.porque-item h3,
+.porque-item p {
+    z-index: 1; /* Garante que o texto fique acima da imagem */
+    margin: 0;
+    color: #ffffff;
+    position: relative; /* Faz com que o texto fique sobre a imagem */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Aumentando a sombra para maior contraste */
+}
+
+/* Título do card */
+.porque-item h3 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 8px; 
+}
+
+/* Descrição do card */
+.porque-item p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-top: 5px; 
+}
+
+/* Fundo semitransparente para melhorar a visibilidade do texto */
+.porque-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 0; 
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    .porque-escolher h2 {
+        font-size: 2.5rem; 
+    }
+
+    .porque-escolher p {
+        font-size: 1.1rem; 
+    }
+
+    .porque-container {
+        flex-direction: column;
+        align-items: center; 
+        padding: 0; 
+        gap: 20px; 
+    }
+
+    .porque-item {
+        width: 90%; 
+        max-width: 300px; /* Define uma largura máxima para os cards */
+        height: 250px; /* Menor altura para telas pequenas */
+    }
+
+    .porque-item h3 {
+        font-size: 1.4rem; /* Reduzindo o tamanho do título */
+    }
+
+    .porque-item p {
+        font-size: 1rem; /* Ajustando o tamanho da descrição */
+    }
+}
+
+
+
 /* Estilos para a seção de serviços */
 .servicos {
     background: linear-gradient(135deg, #001f4d, #003a63); /* Gradiente suave de azul */
@@ -862,10 +1030,12 @@ header {
     flex-wrap: wrap;
     gap: 60px; /* Aumentando o espaçamento entre os itens */
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto; /* Centraliza o container */
     padding: 40px 0;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; /* Garante que o container ocupe 100% da largura */
+    box-sizing: border-box;
 }
 
 /* Texto dos serviços */
@@ -875,6 +1045,7 @@ header {
     transition: opacity 0.3s ease;
     margin: 0 20px;
     opacity: 0.95;
+    flex: 1; /* Permite que o texto ocupe o espaço restante do container */
 }
 
 /* Título dos serviços */
@@ -917,7 +1088,7 @@ header {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Aumenta a sombra para dar profundidade */
 }
 
-/* Estilo para o fundo de serviço com imagem */
+/* Estilo para o fundo de serviço */
 .servico-container::before {
     content: '';
     position: absolute;
@@ -925,7 +1096,6 @@ header {
     left: 50%;
     width: 100%;
     height: 100%;
-    background-image: url('https://www.pexels.com/photo/white-air-conditioner-turned-on-4001026/');
     background-size: cover;
     background-position: center;
     opacity: 0.15; /* Opacidade suave */
@@ -974,13 +1144,13 @@ header {
 
     /* Ajustes no título */
     .servico-texto h2 {
-        font-size: 2.5rem; /* Menor tamanho para títulos */
+        font-size: 2rem; /* Menor tamanho para títulos */
         margin-bottom: 15px;
     }
 
     /* Ajuste na descrição */
     .servico-texto p {
-        font-size: 1.2rem; /* Tamanho de fonte mais adequado para mobile */
+        font-size: 1rem; /* Tamanho de fonte mais adequado para mobile */
         margin-bottom: 15px; /* Menos espaçamento no final */
     }
 
@@ -1005,7 +1175,7 @@ header {
 
 /* Títulos menores */
 .servico-texto h2 {
-    font-size: 3rem; /* Font-size ajustado para manter uma boa legibilidade */
+    font-size: 2.4rem; /* Font-size ajustado para manter uma boa legibilidade */
 }
 
 /* Efeito de fade para o texto */
@@ -1036,370 +1206,13 @@ header {
 
 
 
-
-/* Estilos para a seção "Sobre" */
-.sobre {
-    background: #001f4d; /* Azul escuro */
-    color: white;
-    padding: 80px 20px; /* Mais espaçamento para a seção */
-    text-align: center;
-    border-bottom: 5px solid rgba(255, 255, 255, 0.3); /* Linha de separação mais sutil */
-    position: relative;
-    overflow: hidden; /* Evita que o conteúdo ultrapasse a área da seção */
-}
-
-/* Adicionando um fundo de padrão sutil no fundo */
-.sobre:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.05);
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    animation: pulse 10s infinite ease-in-out;
-}
-
-/* Animação suave para a secção de fundo */
-@keyframes pulse {
-    0% {
-        transform: translate(-50%, -50%) scale(0.9);
-        opacity: 0.1;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.1);
-        opacity: 0.2;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(0.9);
-        opacity: 0.1;
-    }
-}
-
-.sobre-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 50px; /* Aumentando o espaçamento entre os itens */
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 0;
-    z-index: 1;
-}
-
-/* Texto da seção "Sobre" */
-.sobre-texto {
-    max-width: 700px;
-    text-align: left;
-    transition: transform 0.3s ease-in-out; /* Transição suave para animação */
-}
-
-/* Título da seção "Sobre" */
-.sobre-texto h2 {
-    font-size: 3.5rem; /* Aumentando o tamanho do título */
-    margin-bottom: 20px;
-    font-weight: 700;
-    text-transform: uppercase; /* Título em maiúsculas */
-    letter-spacing: 3px; /* Mais espaçamento entre as letras */
-    color: #00d4ff; /* Cor vibrante */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra suave para destacar */
-}
-
-/* Descrição da seção "Sobre" */
-.sobre-texto p {
-    font-size: 1.4rem; /* Aumentando o tamanho do texto */
-    line-height: 1.8; /* Aumentando o espaçamento entre as linhas */
-    margin-bottom: 25px;
-    color: rgba(255, 255, 255, 0.85); /* Cor suave para o texto */
-    max-width: 750px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Estilo da imagem */
-.sobre-logo img {
-    width: 320px; /* Aumentando o tamanho da imagem */
-    height: auto;
-    border-radius: 15px; /* Bordas arredondadas para a imagem */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efeito suave de transformação e sombra */
-}
-
-/* Efeito de hover na imagem para destaque */
-.sobre-logo img:hover {
-    transform: scale(1.1); /* Aumenta o tamanho da imagem ao passar o mouse */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Adiciona uma sombra mais pronunciada */
-}
-
-/* Animação de "bounce" */
-@keyframes bounceIn {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    60% {
-        opacity: 1;
-        transform: translateY(-15px); /* Aumentando o movimento de subida */
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Aplicação da animação bounce na entrada dos elementos */
-.animate {
-    opacity: 0;
-    animation: bounceIn 1s ease-out forwards;
-}
-
-/* Efeito de hover no texto */
-.sobre-texto:hover {
-    transform: translateY(-10px); /* Movimento mais pronunciado para dar destaque */
-    color: #00d4ff; /* Mudando a cor do texto para o destaque */
-    transition: transform 0.3s ease-out, color 0.3s ease-out; /* Transição suave para a cor e movimento */
-}
-
-/* Responsividade para dispositivos móveis */
-@media (max-width: 768px) {
-    .sobre-container {
-        flex-direction: column;
-        padding: 20px 10px;
-    }
-
-    .sobre-logo img {
-        width: 250px; /* Ajustando o tamanho da imagem */
-    }
-
-    .sobre-texto h2 {
-        font-size: 2.5rem; /* Reduzindo o tamanho do título */
-        letter-spacing: 1px;
-    }
-
-    .sobre-texto p {
-        font-size: 1.2rem; /* Ajustando o tamanho da descrição */
-    }
-}
-
-
-
-/* Estilos para o footer */
-footer {
-    background: #001f4d; /* Azul escuro para manter o tema */
-    color: white;
-    padding: 60px 20px;
-    font-family: 'Space Grotesk', sans-serif;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    border-top: 5px solid rgba(255, 255, 255, 0.2); /* Linha superior sutil */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra suave para profundidade */
-}
-
-/* Container para os itens do footer */
-.footer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Logo do rodapé */
-.footer-logo {
-    width: 160px;
-    margin-bottom: 25px;
-    opacity: 0.8;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease;
-}
-
-.footer-logo:hover {
-    opacity: 1;
-    transform: scale(1.05); /* Efeito de leve aumento da logo */
-}
-
-/* Título e subtítulo do rodapé */
-.footer-content h2 {
-    font-size: 2.4rem;
-    margin-bottom: 15px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #00d4ff; /* Cor de destaque para o título */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para maior contraste */
-}
-
-.footer-content p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    opacity: 0.9;
-    max-width: 800px;
-    margin: 0 auto; /* Centralizando o texto */
-}
-
-/* Links de contato */
-.footer-contact {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    margin-top: 30px;
-    animation: fadeInLinks 1s ease-out; /* Animação de entrada dos links */
-}
-
-.footer-contact a {
-    color: white;
-    font-size: 1.3rem;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 50px;
-    padding: 12px 25px;
-    transition: all 0.3s ease;
-    background: transparent;
-    border: 2px solid #00d4ff; /* Borda para destacar os links */
-}
-
-.footer-contact a:hover {
-    background: #00d4ff; /* Cor de fundo ao passar o mouse */
-    color: #001f4d;
-    transform: translateY(-5px); /* Efeito de elevação no hover */
-}
-
-/* Ícones das redes sociais */
-.social-icons {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    margin-top: 30px;
-    animation: fadeInIcons 1.2s ease-out; /* Animação suave para os ícones */
-}
-
-.social-icons img {
-    width: 45px;
-    height: 45px;
-    transition: transform 0.3s ease, filter 0.3s ease;
-    cursor: pointer;
-}
-
-.social-icons img:hover {
-    transform: scale(1.15);
-    filter: brightness(1.2); /* Aumentando o brilho ao passar o mouse */
-}
-
-/* Rodapé inferior */
-.footer-bottom {
-    background: #003366; /* Azul escuro suave para o fundo inferior */
-    color: #ddd;
-    padding: 20px 20px;
-    font-size: 1.1rem;
-    text-align: center;
-    margin-top: 40px;
-    border-top: 2px solid rgba(255, 255, 255, 0.3); /* Linha fina de separação */
-}
-
-/* Animação do rodapé */
-@keyframes fadeInFooter {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Animação de entrada para os links de contato */
-@keyframes fadeInLinks {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Animação de entrada para os ícones de redes sociais */
-@keyframes fadeInIcons {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-footer {
-    animation: fadeInFooter 1s ease-out; /* Animação suave ao aparecer o rodapé */
-}
-
-/* ------------------------ MOBILE STYLES ------------------------ */
-@media (max-width: 768px) {
-    /* Ajustes na logo do footer */
-    .footer-logo {
-        width: 120px; /* Reduzindo o tamanho da logo */
-        margin-bottom: 15px;
-    }
-
-    /* Ajustes no título do footer */
-    .footer-content h2 {
-        font-size: 2rem; /* Menor tamanho para o título */
-        letter-spacing: 1px; /* Menos espaçamento entre as letras */
-    }
-
-    /* Ajustes no texto de descrição */
-    .footer-content p {
-        font-size: 1rem; /* Reduzindo o tamanho da fonte */
-        margin-bottom: 20px; /* Menos espaçamento inferior */
-    }
-
-    /* Ajustes nos links de contato */
-    .footer-contact {
-        gap: 20px; /* Menos espaçamento entre os links */
-        flex-direction: column; /* Organizando os links em coluna */
-        margin-top: 20px; /* Menos espaço acima */
-    }
-
-    .footer-contact a {
-        font-size: 1.1rem; /* Reduzindo o tamanho da fonte dos links */
-        padding: 10px 20px; /* Ajustando o padding */
-    }
-
-    /* Ajustes nos ícones das redes sociais */
-    .social-icons {
-        gap: 20px; /* Menos espaçamento entre os ícones */
-    }
-
-    .social-icons img {
-        width: 35px; /* Reduzindo o tamanho dos ícones */
-        height: 35px;
-    }
-
-    /* Ajustes no footer inferior */
-    .footer-bottom {
-        font-size: 1rem; /* Reduzindo o tamanho da fonte */
-        padding: 15px 10px; /* Menos padding */
-    }
-}
-
-
-
-
-
 /* Estilos para a seção de contato */
 .contato {
-    background: #001f4d; /* Cor de fundo para manter a harmonia com o tema */
+    background: #001f4d;
     color: white;
-    padding: 80px 20px; /* Aumentando o padding para mais espaçamento */
+    padding: 80px 20px;
     text-align: center;
-    border-bottom: 5px solid rgba(255, 255, 255, 0.2); /* Linha de separação suave */
+    border-bottom: 5px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Container para os itens da seção de Contato */
@@ -1410,43 +1223,43 @@ footer {
     gap: 50px;
     max-width: 1200px;
     margin: auto;
-    padding-top: 40px; /* Espaçamento extra superior */
+    padding-top: 40px;
 }
 
 /* Informações de Contato */
 .contato-info {
     max-width: 500px;
     text-align: left;
-    padding-right: 30px; /* Adicionando padding para maior distância */
+    padding-right: 30px;
 }
 
 /* Título das Informações de Contato */
 .contato-info h2 {
-    font-size: 3.5rem; /* Aumentando o tamanho do título */
-    margin-bottom: 25px; /* Aumentando o espaço inferior */
-    color: #00d4ff; /* Cor azul claro */
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    color: #00d4ff;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Adicionando uma leve sombra ao título */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 /* Parágrafo com informações de Contato */
 .contato-info p {
-    font-size: 1.4rem; /* Aumentando o tamanho do texto */
-    line-height: 1.8; /* Melhorando o espaçamento entre as linhas */
+    font-size: 1.4rem;
+    line-height: 1.8;
     margin-bottom: 20px;
-    color: #d1d1d1; /* Cor suave para o texto */
+    color: #d1d1d1;
 }
 
 /* Formulário de Contato */
 .contato-form {
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 15px; /* Bordas mais arredondadas para suavizar o visual */
+    border-radius: 15px; 
     padding: 40px;
     max-width: 600px;
     width: 100%;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adicionando sombra para profundidade */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
 
@@ -1454,7 +1267,7 @@ footer {
 .contato-form h2 {
     font-size: 2.5rem;
     margin-bottom: 25px;
-    color: #00d4ff; /* Azul claro */
+    color: #00d4ff;
     font-weight: bold;
 }
 
@@ -1462,33 +1275,33 @@ footer {
 .contato-form form {
     display: flex;
     flex-direction: column;
-    gap: 25px; /* Aumentando o espaçamento entre os campos */
+    gap: 25px;
 }
 
 /* Rótulos dos campos */
 .contato-form label {
     font-size: 1.2rem;
-    font-weight: bold; /* Destacando os rótulos */
+    font-weight: bold;
 }
 
 /* Estilo dos inputs e textarea */
 .contato-form input,
 .contato-form textarea {
     padding: 15px;
-    font-size: 1.2rem; /* Aumentando o tamanho da fonte */
+    font-size: 1.2rem;
     border: 2px solid #00d4ff;
     border-radius: 10px;
     background-color: transparent;
     color: white;
     width: 100%;
-    transition: border-color 0.3s ease-in-out; /* Efeito de transição suave ao focar */
+    transition: border-color 0.3s ease-in-out;
 }
 
 /* Efeito de foco nos campos de entrada */
 .contato-form input:focus,
 .contato-form textarea:focus {
-    border-color: #00a1e6; /* Mudando a cor da borda quando o campo recebe foco */
-    outline: none; /* Removendo a borda padrão do navegador */
+    border-color: #00a1e6;
+    outline: none;
 }
 
 /* Botão de Envio */
@@ -1502,13 +1315,13 @@ footer {
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: bold;
-    width: 100%; /* Botão ocupa toda a largura */
+    width: 100%;
 }
 
 /* Efeito de hover no botão */
 .contato-form button:hover {
     background-color: #001f4d;
-    transform: translateY(-5px); /* Efeito de elevação */
+    transform: translateY(-5px);
 }
 
 /* Efeito de foco suave no formulário */
@@ -1532,31 +1345,31 @@ footer {
 @media (max-width: 768px) {
     /* Ajustes de espaçamento para mobile */
     .contato {
-        padding: 60px 20px; /* Ajustando padding */
+        padding: 60px 20px;
     }
 
     /* Container de Contato com layout ajustado */
     .contato-container {
-        flex-direction: column; /* Alinhamento em coluna para dispositivos móveis */
-        gap: 30px; /* Menos espaçamento entre os itens */
+        flex-direction: column;
+        gap: 30px;
         padding-top: 20px;
     }
 
     /* Ajustes na parte de informações de contato */
     .contato-info {
         max-width: 100%;
-        text-align: center; /* Centralizando o texto no mobile */
+        text-align: center;
         padding-right: 0;
     }
 
     /* Título das informações */
     .contato-info h2 {
-        font-size: 2.8rem; /* Reduzindo o tamanho do título */
+        font-size: 2.8rem;
     }
 
     /* Descrição dos serviços */
     .contato-info p {
-        font-size: 1.2rem; /* Ajustando o tamanho do texto */
+        font-size: 1.2rem;
         margin-bottom: 20px;
     }
 
@@ -1576,7 +1389,7 @@ footer {
     /* Ajustes nos campos de formulário */
     .contato-form input,
     .contato-form textarea {
-        font-size: 1.1rem; /* Menor fonte nos campos */
+        font-size: 1.1rem;
     }
 
     /* Ajustes no botão */
@@ -1588,242 +1401,77 @@ footer {
 
 
 
-/* Estilos para a seção "Por que Escolher?" */
-.porque-escolher {
+/* Estilos para o footer */
+footer {
+    background: #001f4d;
+    color: white;
+    padding: 60px 20px;
+    font-family: 'Space Grotesk', sans-serif;
     text-align: center;
-    padding: 80px 20px;
-    background-color: #001f4d; /* Cor de fundo para combinar com o tema */
-    color: white; /* Cor do texto para garantir boa legibilidade */
-    animation: fadeIn 1s ease-out;
-    border-bottom: 5px solid rgba(255, 255, 255, 0.3); /* Linha de separação mais sutil */
     position: relative;
     overflow: hidden;
+    border-top: 5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Adicionando um fundo de padrão animado suave */
-.porque-escolher:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.1);
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    animation: pulse 8s infinite ease-in-out;
-}
-
-/* Animação suave de "pulse" no fundo */
-@keyframes pulse {
-    0% {
-        transform: translate(-50%, -50%) scale(0.9);
-        opacity: 0.1;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.1);
-        opacity: 0.2;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(0.9);
-        opacity: 0.1;
-    }
-}
-
-/* Título da seção "Por que Escolher?" */
-.porque-escolher h2 {
-    font-size: 3.5rem; /* Aumentando o tamanho do título */
-    color: #00d4ff; /* Usando o tom azul claro do seu site */
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 3px; /* Espaçamento maior entre as letras */
-    animation: fadeInTitle 1s ease-out;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Adicionando sombra no título */
-}
-
-/* Descrição da seção "Por que Escolher?" */
-.porque-escolher p {
-    font-size: 1.3rem; /* Aumentando o tamanho do texto */
-    color: #d1d1d1; /* Tom mais claro de cinza */
-    margin-bottom: 40px;
-    line-height: 1.8;
-    animation: fadeInText 1.5s ease-out;
-    max-width: 750px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Container para os itens da seção */
-.porque-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 50px; /* Aumentando o espaçamento entre os itens */
-    animation: slideUp 1s ease-out;
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 0;
-}
-
-/* Item individual */
-.porque-item {
-    background: #002f5f; /* Cor azul escuro para os itens */
-    padding: 40px 25px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    width: 280px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Container para os itens do footer */
+.footer-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    height: 320px;
-    position: relative;
-    overflow: hidden;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Efeito de hover para os itens */
-.porque-item:hover {
-    transform: translateY(-15px); /* Aumentando o efeito de elevação */
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
-}
-
-/* Adicionando bordas e sombras dinâmicas nos itens */
-.porque-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    transform: scale(0);
-    transition: transform 0.3s ease-in-out;
-}
-
-.porque-item:hover::before {
-    transform: scale(1);
-}
-
-/* Ajustes no ícone dentro de cada item */
-.porque-item img {
-    width: 90px; /* Aumentando o tamanho do ícone */
-    height: 90px;
-    margin-bottom: 25px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efeito de zoom no ícone */
-.porque-item:hover img {
-    transform: scale(1.2); /* Aumentando o zoom do ícone */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Sombra suave no ícone */
-}
-
-/* Título de cada item */
-.porque-item h3 {
-    font-size: 1.5rem;
-    color: #00d4ff;
+/* Título e subtítulo do footer */
+.footer-content h2 {
+    font-size: 2.4rem;
     margin-bottom: 15px;
     font-weight: bold;
-    text-transform: uppercase; /* Colocando os títulos em maiúsculas */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #00d4ff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Descrição de cada item */
-.porque-item p {
+.footer-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Footer inferior */
+.footer-bottom {
+    background: #003366;
+    color: #ddd;
+    padding: 20px 20px;
     font-size: 1.1rem;
-    color: #d1d1d1;
-}
-
-/* Animações para entrada da seção */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInTitle {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInText {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    text-align: center;
+    margin-top: 40px;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 /* ------------------------ MOBILE STYLES ------------------------ */
 @media (max-width: 768px) {
-    /* Ajustes no título da seção */
-    .porque-escolher h2 {
-        font-size: 2.8rem; /* Reduzindo o tamanho do título */
-        letter-spacing: 1px; /* Diminui o espaçamento entre as letras no mobile */
+    /* Ajustes no título do footer */
+    .footer-content h2 {
+        font-size: 2rem;
+        letter-spacing: 1px;
     }
 
     /* Ajustes no texto de descrição */
-    .porque-escolher p {
-        font-size: 1.2rem; /* Menor tamanho do texto */
-        margin-bottom: 30px; /* Menos espaço abaixo */
-        max-width: 90%; /* Aumentando a largura para ficar mais preenchido */
+    .footer-content p {
+        font-size: 1rem;
+        margin-bottom: 20px;
     }
 
-    /* Ajustes no container */
-    .porque-container {
-        gap: 30px; /* Menos espaçamento entre os itens */
-        padding: 20px 0; /* Ajuste no padding */
-    }
-
-    /* Ajustes nos itens individuais */
-    .porquê-item {
-        width: 100%; /* Itens ocupam toda a largura disponível */
-        max-width: 300px; /* Limitando a largura máxima */
-        padding: 30px 20px; /* Menos padding */
-        height: auto; /* Altura automática para caber em diferentes tamanhos */
-    }
-
-    /* Ajuste no ícone */
-    .porquê-item img {
-        width: 80px; /* Menor ícone */
-        height: 80px; /* Ajustando a altura também */
-    }
-
-    /* Ajuste do texto dentro de cada item */
-    .porquê-item h3 {
-        font-size: 1.3rem; /* Menor tamanho de fonte */
-    }
-
-    /* Ajuste do texto de cada item */
-    .porquê-item p {
-        font-size: 1rem; /* Reduzindo o tamanho da descrição */
+    /* Ajustes no footer inferior */
+    .footer-bottom {
+        font-size: 1rem;
+        padding: 15px 10px;
     }
 }
-
